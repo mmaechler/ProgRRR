@@ -7,11 +7,16 @@
 - 20.Oct.2016, 9:00--17:00  (2 coffee breaks, lunch break)
 - 21.Oct.2016, 9:00--~16:30            ditto
 
+* *Venue* (@ Zürich Oerlikon) :
+  Zentrum for Weiterbildung, Schaffhauserstrasse 228
+  Tram 10 or 14, exit at "Berninaplatz".
+  (http://www.zwb.uzh.ch/anreise.html).
+
+
 * *Target audience*:
 
 	Advanced R users.  Knowledge about basic R language data types such as
-	lists or the `lapply()` function is assumed, and typically
-	you have written your own R functions before.
+	lists or the `lapply()` function is assumed, and typically you have written your own R functions before.
 
 	(For introductory R courses please revisit the course list.)
 
@@ -39,3 +44,40 @@ thorough understanding of the R language.
     -  Object oriented programming with S3 and S4
     -  R code parallelization
     -  Using compiled code (C, C++, Fortran)
+
+
+----
+
+
+
+* Web Page for Material -- on [Github](https://github.com):
+  [MMaechler/ZHR](https://github.com/mmaechler/Progr-RRR/ZHR):
+  [Progr-RRR/ZHR](https://github.com/Progr-RRR/ZHR):
+
+* It would be _nice_ but not necessary to use a "pre-release" of R, i.e.,
+  __"R 3.3.1 patched"__ instead of just `R 3.3.1`, for the main reason that
+  all the help pages about package `methods` __S4__ methods and classes
+  have been thoroughly reworked, including the examples.
+
+	- Windows users get it from
+	  https://cloud.r-project.org/bin/windows/base/rpatched.html
+	- Mac users from http://r.research.att.com/
+	  selecting __`R-3.3-branch`__
+	  or download directly the [signed pkg](http://r.research.att.com/mavericks/R-3.3-branch/R-3.3-branch-mavericks-signed.pkg)
+    - Linux users need to install from source, getting it from
+	  http://stat.ethz.ch/R/daily/ (from our _"SfS"_ (Seminar fuer
+	  Statistik, Math Dept., ETH Zurich)), typically downloading the "tar
+	  ball" directly [R-patched.tar.gz](http://stat.ethz.ch/R/daily/R-patched.tar.gz).
+
+	  __Before__ trying to install that, on Ubuntu (or similar Debian descendant), use
+```sh
+ sudo apt-get build-dep r-base-dev
+ ```
+      More information for these is available from CRAN's
+	  https://cloud.r-projec.org/bin/linux/ubuntu/   and
+	  https://cloud.r-projec.org/bin/linux/debian
+
+* If you cannot get such an R version installed (and in any case), you can
+  always browse the documentation including all help pages of _"R patched"
+  at  http://stat.ethz.ch/R-manual/R-patched/doc/html/
+  (provided by the "SfS", ETH and myself for more than 15 years)
