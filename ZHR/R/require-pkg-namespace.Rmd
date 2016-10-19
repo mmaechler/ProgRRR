@@ -1,0 +1,26 @@
+---
+title: "What does `library(<pkg>)` do?"
+author: "Martin Maechler"
+date: "April 2016"
+output: html_document
+---
+
+### What happens when you "get" a package: `library()` etc
+
+```
+require(<pkg>) \   1) load the namespace corresponding to 'pkg'  
+                \         -> *import* (*recursively*) everything needed  
+                /  2) attach "the package"  to the search() path.  
+library(<pkg>) /	            "the package" :=  The *export*ed objects  
+```
+
+### Every Package has two important "Meta data" files:
+* `DECRIPTION`: contains `Depends:`, `Imports:`, ...
+* `NAMESPACE`: has `imports()` and `exports()`
+              (plus `S3methods()`, `exportClasses()`, ...)
+
+### R functions related to this:
+* `loadNamespace()`
+* `::`  ( and also `:::` )
+*  `sessionInfo()`
+*  `getAnywhere()`

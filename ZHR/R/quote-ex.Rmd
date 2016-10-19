@@ -1,0 +1,34 @@
+---
+title: "Making Symbols aka Names: quote() or .. ?"
+author: "Martin Maechler, ETH Zurich"
+date: "March 21, 2016"
+output: html_document
+---
+
+## Introduction
+
+Looking at package `nlme` which really is older than R,
+I have recently tried to use "modern" R idioms, which did not exist at the
+time when `nlme` was created.
+
+Rather, it had about half a dozen `as.name("model.frame")`.
+(TODO: look more detailed in older versions)
+
+and it is known to be "better" use  `quote(stats::model.frame)`  because
+that also works in some cases, e.g., when `stats` is not attached (to the
+`search` path).
+
+Question: Is `quote()` also more efficient than `as.name("")` ?
+
+```{r}
+require("microbenchmark")
+
+stopifnot(identical( quote(fooBar), as.name("fooBar") ))
+
+(mb1 <- microbenchmark(quote(fooBar), as.name("fooBar"), times=1000))
+boxplot(mb1) # -> ylab = "log(time) [t]"  --- what is [t] ???
+## I rather want
+boxplot(mb1, ylab = "nano-seconds  [log-scale]", notch=TRUE)
+```
+
+Yes:  `quote()` is **way** faster !

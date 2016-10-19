@@ -1,0 +1,101 @@
+---
+title: "Namespaces - why"
+author: "Martin Maechler"
+date: "September 2015; update Oct 2016""
+output: ioslides_presentation
+---
+
+## Why do we need  **namespaces** in R ?
+
+_Note_: The source is in MM's `r current_input(dir=TRUE)`
+
+Short answer: __To prevent name conflicts and to allow modular programming in packages__
+
+Example from Luke Tierney (2003)'s  introductory article on namespaces
+
+```{r}
+mydnorm <- function(z)
+ 1/sqrt(2 * pi) * exp(- z^2 / 2)
+
+mydnorm(-2:2)
+
+x <- seq(-5,5, length=100)
+all.equal(dnorm(x), mydnorm(x))
+```
+
+##
+So our function `mydnorm()` is ok,  
+the same as the R builtin  `dnorm()`.  But it is _less_ safe :
+
+```{r}
+pi <- 3
+mydnorm(-2:2)
+```
+and these numbers are all wrong,
+because R finds the wrong `pi` in `search()` :
+```{r, pi-search}
+find("pi")
+search()
+```
+
+## R's  `search()` path
+R finds your object in `search()` - and uses the first found
+```{r}
+search()
+conflicts()
+find("pi")
+```
+What if you use many packages?  You get even more conflicts
+
+## Packages in `search()` - conflicts
+
+```{r, Hmisc}
+require("Hmisc")
+```
+## More packages ... more conflicts
+```{r, dplyr}
+require("dplyr")
+```
+```{r, dplyr-detach, echo=FALSE}
+detach("package:dplyr")
+```
+
+## require("dplyr") .. [continued]
+<!-- needs package `sfsmisc`, R-forge version >= 2015-09-05: -->
+```{r, dplyr-2, echo=FALSE}
+require("sfsmisc") # for the function capture.and.write()
+capture.and.write(suppressWarnings(require("dplyr")), first = 1, last = 15)
+```
+
+
+## Conflicts in search() -- unavoidable
+```{r,pkg-conflicts}
+conflicts()
+head(search())
+```
+The *solution*:   -->  *Namespace*s : ...
+
+## Solution:  Namespaces
+*Namespace*s : complete protection of the functions in a package
+from "re-definitions" in "globalenv" or other packages:
+
+- A package must declare where it **imports** the functions (and objects, e.g., `pi`) it uses.
+- The package also can use many **helper**  functions and only **export** the main functions
+- Consequence: Much more modular programming; clean interfaces
+
+## Packages & namespaces in R session
+```{r, session-show, eval=FALSE}
+sessionInfo() ## note the  " loaded via namespace (and not attached) "
+```
+```{r, session-do, echo=FALSE}
+# simple, but does not fit on one slide:
+print( sI <- sessionInfo() , locale=FALSE)
+```
+
+## loaded ... (and not attached)
+`sessionInfo()`
+<!-- the following needs package `sfsmisc`, R-forge version >= 2015-09-05: -->
+```{r, only-namespace, echo=FALSE}
+capture.and.write(sI, first = 1, last = 12)
+```
+

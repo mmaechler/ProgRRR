@@ -1,0 +1,86 @@
+---
+title: Language Objects in R
+author: Martin Maechler
+date: "Aug. 28, 2015  (last change: Oct.13, 2016)"
+output:
+  html_document:
+    highlight: tango
+    keep_md: yes
+    theme: journal
+---
+# R's building blocks
+
+In one way, since in R,
+
+>    *Everything that happens is a function call*     (John Chambers, part 2),
+
+`call`s are the basic language objects in R.
+
+```{r sin_x}
+cc <- quote( sin(x) )
+cc
+class(cc)
+```
+
+Looking closely, `call`s are made from `symbol`s, here, `sin(x)` is made
+from the two symbols `sin` and `x`:
+```{r calls2}
+length(cc)
+c1 <- cc[[1]]; c1
+c2 <- cc[[2]]; c2
+
+typeof(c1)
+   str(c2)
+```
+
+# Get to the substance - R functions of object inspection
+
+Since in R,
+
+>    *Everything that exists is an object*     (John Chambers, part 1),
+
+we want to find out what "kind" of an object we have.
+The most useful "user-level" function to get an idea about an object is `str()` for displaying the **str**ucture of an R object...  It is used very often interactively, to get both a bit of an overview and some details about object's structure.
+`str()` is not meant to be used as tool to be used in other functions, so from a programmeR's view,
+the standard functions for object inspectionto use are `class()` which is "high-level" and `typeof()` which is low-level.
+For historical reasons (back compatibility with **S** / **S+**), another low-level inspector function is `storage.mode()`  and another higher-level one is `mode()`.
+
+Here, we use them on a somewhat representative collection of R objects (all conveniently put in a `list`)
+to see how these R objects, are categorized by the different "inspection" functions.
+
+<!-- FIXME: start with expression(..., .., .., ) instead of list(.., ) ==> -->
+<!-- even nicer table-->
+```{r l.ex}
+l.ex <- list(one=1, s1= 1:2, pi=pi, I=1i, let= c("A", "a", "b", ":::"),
+             fn = mean, fn2 = c, fnSpec = `function`,
+             n = as.name("Mä"), n2 = quote(x), ex = expression(1+1),
+             cl = call("round",10), cl2 = quote(sin(x)), formula = y ~ x+t, 
+			 formals = formals(lm), arg1 = formals(lm)[[1]])
+str(l.ex, vec.len = 16, max.level = 1)
+```
+
+```{r show.them}
+myShow <- function(x, max.length= 1000L) {
+    r <- tryCatch(format(x), error=function(e)e)
+    r <- if(inherits(r, "error"))
+             tryCatch(as.character(x), error=function(e)e)
+         else paste(r, collapse=" ")
+    r <- if(inherits(r, "error"))
+             tryCatch(capture.output(x), error=function(e)e)
+         else paste(r, collapse=" ")
+    substr(r, 1L, max.length)
+}
+
+cbind(show    = sapply(l.ex, myShow, max.length = 16),
+      typeof  = sapply(l.ex, typeof),
+      st.mode = sapply(l.ex, storage.mode),
+      mode    = sapply(l.ex, mode),
+      class   = sapply(l.ex, class)) -> tab.ex
+```
+Now instead of printing this directly - which is readable and nice already,
+let's be "advanced" and use a `knitr` package feature to produce "raw markdown" tables:
+```{r table-show, results='asis'}
+knitr::kable(tab.ex, format="pandoc")
+```
+
+_Note_: The source of this document is MM's `r knitr::current_input(dir=TRUE)`

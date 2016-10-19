@@ -1,0 +1,124 @@
+---
+output:
+  html_document:
+    keep_md: yes
+---
+R Markdown:  "Why 10 * 0.1 is rarely 1.0"
+========================================================
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **MD** toolbar button for help on Markdown).
+
+When you click the **Knit HTML** button in RStudio, a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
+Why "10 * 0.1 is rarely 1.0"
+============================
+The above is a citation of one of the early books in computer science,
+[The Elements of Programming Style](http://en.wikipedia.org/wiki/The_Elements_of_Programming_Style) by Kernighan and Plauger, 1974, where it was the title of section 36 (of 56).
+
+Actually, it `10 * 0.1` *is* `1.0` on most platforms in today's R, typically:
+```{r}
+10 * 0.1 == 1.0
+```
+Still, as you will hopefully come to see, it is rather *lucky coincidence*, because we will see that `0.1` is not exactly the same as the mathematical $1/10$.
+Let's explore some of the numbers in R:
+```{r}
+x1 <- seq(0, 1, by = 0.1)
+(x2 <- 0:10 / 10)
+```
+So far, nothing special. Both `x1` and `x2` are the
+the same, 0, 0.1, 0.2, ..., 1.0,  right ?
+```{r}
+x1 == x2
+```
+Oops, what happened?
+```{r}
+n <- 0:10
+rbind(x1 * 10 == n,
+      x2 * 10 == n)
+```
+
+So it seems, that  `x2` is exact, but `x1` is not?
+Not true:
+```{r}
+(d2  <- diff(x2))
+unique(d2)
+```
+Aha...  So, one `0.1` differs from some other `0.1` ??
+Is R computing nonsense?
+
+No.  The computer can only compute with finite precision, **and** it uses _binary_ representations of all the "numeric" (_double_) numbers.
+```{r}
+print(x2, digits=17)
+```
+
+
+On one hand, we learned that $(a + b) - a = b$ or similarly $(a/b) \times b = a$,
+or  $\frac a n + \frac b n = \frac{a+b}{n}$
+in high school -- or earlier.
+As you can see from above, this is not always true in computer arithmetic:
+```{r}
+1/10  + 2/10 ==  3/10
+```
+Why? ... ...
+Well if they are not equal, let's look at the difference
+```{r}
+1/10  + 2/10  - 3/10
+```
+Aha... So what happened above?
+```{r}
+(u2 <- unique(d2))
+u2 * 10
+u2 - 1/10
+```
+
+**Note**: Among all the (shortened) fractions $m / n$,
+only very few are exact in (usual) computer arithmetic:
+The denominator $n$ must be of the form $n = 2^k, k \in \{0,1,\dots\}$,
+e.g.  1/2,  3/4,  13/16,   but not 1/10, 2/10, 3/10, 4/10 !
+
+### **Take away:**
+
+1. Do not use '==' for numbers unless they are integer**
+   (or otherwise *known* to be exact)
+2. Compare (vectors of) numbers with `all.equal()`
+```{r}
+all.equal(x1, x2)
+all.equal(x1, x2, tol = 1e-10)
+all.equal(x1, x2, tol = 1e-15)
+all.equal(x1, x2, tol = 0) ## -> shows the *relative* difference
+```
+
+3. Sometimes, instead of `all.equal`, you use `abs(x - y) < 1e-10` (absolute error)
+   or often more reasonably
+```{r}
+abs(x1 - x2) <= 1e-10 * abs((x1 + x2)/2)
+```
+and you may note that `<=` is important and not the same as `<`.
+
+---
+
+### After thought:
+```{r}
+ii <- 1:20
+cbind(ii, "1/n + 2/n - 3/n" = sapply(1:20, function(n) 1/n + 2/n - 3/n))
+##... R get's it right more often than not ..
+n <- 500 # or 1500, 5000 ..
+ii <- 1:n ; not.eq <- sapply(ii, function(n) (1/n + 2/n - 3/n) != 0)
+ii[not.eq] ## hmm... do we see a pattern ?
+
+plot(ii[not.eq])
+grid()
+plot(diff(ii[not.eq]))
+plot(diff(ii[not.eq]), type = "o")
+acf (diff(ii[not.eq])) # .. weak pattern .. not clear
+acf (sqrt(diff(ii[not.eq]) - 1)) # .. not clear
+```

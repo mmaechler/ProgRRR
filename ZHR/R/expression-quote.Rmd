@@ -1,0 +1,86 @@
+---
+title: Expressions, Calls, etc.
+author: Martin Maechler, from a question in "Programming with R^3"
+date: March 2016
+---
+
+	From: Rene Locher .... @ ZHAW.ch
+	To: Martin Maechler <maechler@stat.math.ethz.ch>
+	Subject: Programming with R: Difference between quote() and expression()
+	Date: Tue, 22 Mar 2016
+
+Could you tell me the difference between quote() and expression()? The
+only thing I have found  is that expression() accepts a "list" of R
+expressions while quote() accepts only one.
+
+```{r, knitr-setup, echo=FALSE}
+knitr::opts_chunk$set(comment=NA, prompt=TRUE)
+```
+```{r, expr}
+(ex1 <- expression(1 + 0:9))
+str(ex1) # expression(..)
+eval(ex1) # 1:10
+```
+
+```{r, quote}
+(qu1 <- quote(1 + 0:9))
+str(qu1)# language ..
+eval(qu1)
+```
+
+Kind regards
+René
+ ---
+
+Martin Maechler: what do we have?  Here,  `str()` did not give enough low-level
+information, so we use our own small `what()` utility.
+
+* Note: In  https://rpubs.com/maechler/R_language_objs  I use a more sophisticated function `myShow()` and also explain that `call`s are built out of `symbol`s.
+* Note 2: I mentioned and showed that in the first lesson, see 'Week 1' and "Everything (in R) is an object" on
+https://stat.ethz.ch/education/semesters/ss2016/Progr_R3/
+
+
+```{r, what}
+what <- function(.) c(type = typeof(.), class = class(.), mode = mode(.))
+sapply(list(ex1 = ex1, qu1 = qu1, frm = y ~ x), what)
+```
+
+So, indeed, the function  `expression()` returns an object of class
+`"expression"`, whereas `quote()` (and other "such" functions, notably
+`as.name()`, or `substitute()`) return a "language" object of class
+`"call"` (( typically; if that call is particularly simple, they directly return an object even
+simpler than a call, such as a number or a `"name"` or
+`"symbol"` (the latter two being **equivalent** in R's terminology):
+
+```{r, what2}
+stopifnot( identical(quote(77), 77) ) # call to a constant number
+sapply(list(ex=ex1, qu=qu1, q.abc = quote(abc), q.77 = quote(77)),  what)
+```
+
+The general rule to get the answer to such a question should be to read the
+R help page(s).
+
+I think that  `?expression` actually does very nicely answer the question
+as it explains that `expression()` does return something like a `list()` of
+calls.
+
+The following code shows that as well:
+
+```{r, expr=list}
+ex1 ; length(ex1) # 1
+ex1[[1]]
+stopifnot( identical(ex1[[1]], qu1) )
+length(ex3 <- expression(x+y, x^3, { r <- (x-y)^2 ; r }))
+stopifnot( identical(ex3[[2]],  quote(x^3)) )
+```
+
+Further, as it is mentioned on the `? expression` help page, do take notice of the (in)famous
+`parse()` function, and that it is a (character based, often **less** recommended) way to produce the same as `expression()` in the following sense :
+```{r, parse}
+identical(parse(text = "foo + bar", keep.source=FALSE),
+          expression(foo + bar))
+```
+
+
+
+

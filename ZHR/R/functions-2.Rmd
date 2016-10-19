@@ -1,0 +1,117 @@
+Motto -- Attributed to John Chambers, ACM award winner, father of S and R:
+
+In R,
+
+- Everything that **exists** is an object;
+- Everything that **happens** is a function call
+
+Consequently, we want to
+
+1. understand R objects
+2. see *what* functions are called when _"we type simple things"_
+
+**Replacement functions :**
+
+```{r}
+v <- 1:5
+names(v) <- LETTERS[1:5]
+v
+v <- 1:5
+names(v) <- c("Hans", "Heiri")
+v
+```
+
+Hmm, ...,  what functions where called in the above lines?
+
+```{r}
+`names<-`
+get("names<-") # here equivalent to the line above, using   ` ... `
+identical(`names<-`, get("names<-"))
+```
+
+>>> Excursion: Look at the functions in `base` etc: Open  `packages.Rnw`
+
+
+We can define quite funny functions ourself ..
+```{r}
+`[<-`  <- function(){}
+find("[<-") # in two places ..
+get("[<-",1)
+get("[<-","package:base")
+
+x <- 1:7
+try(
+x[1] <- 10
+)# --> an error .. oops !!
+```
+we broke  R .... well, *our* R session only.
+How to fix?
+
+
+```{r}
+rm("[<-")
+x[1] <- 10 ; x ## aaahh... life is well again
+
+`[<-.factor` ## the "factor" method of the `[<-` generic function
+ ## This is the "factor" method of the `[` generic function
+methods("[<-")
+```
+
+**Note**
+
+An R function is made of three parts
+1. `formals()`    : The argument list
+2.    `body()`    : The function body
+3. `environment()`: The environment in which the function has been defined
+
+```{r}
+str(abline) # the function "header" *printed*
+args(abline)  # the "[arg]ument[s]" (but ..)
+str(args(abline)) # {as empty function}
+f <- abline
+body(f) <- NULL
+f
+
+## The "real" argument list as R object:
+str ( formals(abline) ) # "Dotted pair list"
+
+?body
+?formals ##  there is a replacement function
+def.u  <- formals(abline)$untf
+def.u
+deff <- formals(formals)[["fun"]]
+deff
+class(deff)
+```
+
+** `missing()` allows to check if an argument has been specified  in the actual call: **
+```{r}
+tt  <- function(x, ab=TRUE) {
+        cat("missing(x):", missing(x),
+            "miss.(ab):", missing(ab),"\n")
+        formals()
+}
+tt(1)
+tt(1, TRUE)
+tt() ## the formals arguments of tt()
+```
+
+** Formal (and "actual") Arguments **
+
+```{r}
+sin     # formal argument  'x'
+sin(pi) # actual argument 'pi' --- is matched to the formal:
+```
+... something like `x <- pi` happens implicitly when the function is
+called: The formal argument is replaced by the actual.
+
+Beware of  "Lazy Evaluation" (replacement only happens as needed)
+
+sin is  *Primitive* function -- these are made to be very fast in R
+by ``diving into C-level'' of R immediately.
+==> They are the exeptions: all three parts are empty
+```{r}
+formals(sin) ## NULL, ditto for the body
+body   (sin)
+environment(sin)
+```
