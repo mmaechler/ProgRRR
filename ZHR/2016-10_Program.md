@@ -4,6 +4,7 @@
 * *Lecturer*: [Martin Mächler, Seminar für Statistik, ETH Zürich)](https://stat.ethz.ch/~maechler)
 * *Duration*: 2 days
 * *Date & Time*:
+
 	- 20.Oct.2016, 9:00--17:00  (2 coffee breaks, lunch break)
 	- 21.Oct.2016, 9:00--~16:30            ditto
 
