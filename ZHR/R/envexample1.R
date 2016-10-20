@@ -24,7 +24,7 @@ w <- 10
 f(3)
 rm(w)
 ## Sometimes we think we rather "want"  **dynamic scoping**
-## but R uses  "only" syntactic scoping :
+## but R uses  "only" "syntactic" aka lexical scoping :
 g <- function(a) {
         w <- 10
         f(a)
