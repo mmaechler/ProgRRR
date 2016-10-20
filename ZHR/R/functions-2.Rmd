@@ -88,12 +88,14 @@ class(deff)
 ```{r}
 tt  <- function(x, ab=TRUE) {
         cat("missing(x):", missing(x),
-            "miss.(ab):", missing(ab),"\n")
-        formals()
+            "miss.(ab):", missing(ab), "\n")
+        cat("str( formals() ): "); str(formals())
+        cat("number of args:", nargs(),"\n")
+        match.call() # the function *call* (an object of class & type  "call")
 }
 tt(1)
 tt(1, TRUE)
-tt() ## the formals arguments of tt()
+str(r <- tt())
 ```
 
 ** Formal (and "actual") Arguments **
