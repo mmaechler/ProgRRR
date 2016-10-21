@@ -35,5 +35,17 @@ iris$Price <- apply(iris,1,function(x){
 # How to write functions that are vectorized and can be applied on data.frame without loops/apply?
 # How use kronecker products etc. efficiently?
 
+# So what to do ? here's a (way faster) suggestion from @fabiangehring - THX!
+# Don't use a pattern like example 1. Use vectorization!
+# Both, example 2 and 3 will be way! faster than the initial questions. 
+
+# Ex2
+VAT <- 0.08
+setosa <- iris$Species == "setosa"
+iris$Price2[setosa] <- 1.1 * (1 + VAT) * (iris[, "Sepal.Length"][setosa] + iris[, "Petal.Length"][setosa])
+iris$Price2[!setosa] <- (1 + VAT) * (iris[, "Sepal.Length"][!setosa] * iris[, "Petal.Length"][!setosa])/2
+iris$Price2 
+
+
 
 
