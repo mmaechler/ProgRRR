@@ -1,5 +1,5 @@
-### Week 6 ---- "How R Searches and Finds Stuff" -- part 2 -------
-
+#### ---- "How R Searches and Finds Stuff" -- part 2 --- Extended by M.Maechler
+####       ------------------------------
 
 (e <- environment( mean )) # namespace:base
 parent.env(e)# globalenv of course (because 'e' is)
@@ -49,15 +49,17 @@ require(Rmpfr)##--> Messages
 
 ##--------------
 asNamespace("MASS")
-(IM <- parent.env( asNamespace("MASS") ))
+(IM <- parent.env( asNamespace("MASS") )) # ->  imports:MASS
+       ## = everything that MASS imports
 ls(IM) ## 118 objects -- many from 'stats'
 ##-- as we have seen in the source's  MASS/NAMESPACE file
 
 
-svn ci -m'split(.., lex.order) --> boxplot.formula() ditto'
-svn-diffB doc/NEWS.Rd src/library/base/man/split.Rd src/library/base/R/split.R src/library/base/R/dates.R src/library/base/R/datetime.R src/library/graphics/R/boxplot.R src/library/graphics/man/boxplot.Rd tests/Examples/graphics-Ex.Rout.save
-
 ## --- New *after* 2016 lecture : --------
+##' @title Collect all Parents of an Environment
+##' @param e any 'environment'
+##' @return a (named) list of environments: The "full chain" from 'e'
+##' @author Martin Mächler
 allParents <- function(e) {
     r <- e ## r := {collection of environments we encounter}
     EE <- emptyenv()
@@ -72,7 +74,10 @@ allParents <- function(e) {
 ap1 <- allParents(environment(lm))
 str(ap1) # maybe "too muchl" --> use
 str(ap1, give.attr=FALSE)
-## now we know that already:
-ap1[[length(ap1) - 2]] ## the 'Autoloads'
+
+
+## now we (may or may not) know that already:
+(AutoL <- ap1[[length(ap1) - 2]]) # the 'Autoloads'
+identical(AutoL, .AutoloadEnv)    # indeed
 
 
