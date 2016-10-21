@@ -6,9 +6,10 @@
 #### http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
 #### ===========================================================
 
-### Early section
-### "Play time with Environments (don’t skip me)"
-###  -------------------------------------------
+### Part 1: The early section
+###	"Play time with Environments (don’t skip me)"
+###      -------------------------------------------
+### Modified by Martin Maechler, ETH Zurich
 
 ## environments are just objects.  lets create one.
 myEnvironment  <- new.env()
