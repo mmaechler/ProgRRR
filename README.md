@@ -15,7 +15,12 @@
 - collections of free teaching material or Web links to them
   - [How R Searches and Finds Stuff](http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/)
 
-Martin Maechler, ETH Zurich
+### --> ProgR-RRR __collaboration__ Project
+ -	[ProgR-RRR Github Project](https://github.com/Progr-RRR)
+   -	Its [ZH R](https://github.com/Progr-RRR/ZHR) repository
+
+---
+[Martin Maechler](https://stat.ethz.ch/~maechler), [ETH Zurich](https://www.ethz.ch.)
 
 
 
