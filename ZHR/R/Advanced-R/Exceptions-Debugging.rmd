@@ -1,7 +1,7 @@
 ---
 title: Exceptions and debugging
 layout: default
-output: bookdown::html_chapter
+output: html_output
 ---
 
 # Debugging, condition handling, and defensive programming {#debugging}
