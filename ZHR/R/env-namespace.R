@@ -4,8 +4,7 @@
 (e <- environment( mean )) # namespace:base
 parent.env(e)# globalenv of course (because 'e' is)
 try( asNamespace("package:base") ) # but
-try( asNamespace("base") ) # but
-
+     asNamespace("base") # works
 
 ##--
 nm.stats <- environment( lm ) # <environment: namespace:stats>
@@ -14,8 +13,8 @@ str(L2 <- ls("package:stats"))  # chr [1: 446] "acf" "acf2AR" "add.scope" "add1"
 str(intersect(L1, L2))
 identical(L2, intersect(L1, L2)) # TRUE
 ## L2 is true subset of L1
-setdiff(L1, L2)
-setdiff(L2, L1) ## 600 something objects, e.g., coef.default
+setdiff(L1, L2) ## 600 something objects, e.g., coef.default
+setdiff(L2, L1) ## 0 obj.
 
 identical(asNamespace("stats"), nm.stats) # TRUE
 (pkg.stats <- as.environment("package:stats"))
@@ -70,9 +69,9 @@ allParents <- function(e) {
     r <- c(r, EE)
     setNames(r, vapply(r, environmentName, ""))
 }
-
+try( rm(lm))
 ap1 <- allParents(environment(lm))
-str(ap1) # maybe "too muchl" --> use
+ap1 # maybe "too muchl" --> use
 str(ap1, give.attr=FALSE)
 
 
