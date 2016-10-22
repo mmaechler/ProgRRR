@@ -106,6 +106,7 @@ ls( envir = myEnvironment )
 
 ## We can retrieve any named object from any given environment using the get() function
 get( "myLogical", envir = myEnvironment )
+myEnvironment$myLogical # equivalently
 ## [1] FALSE  TRUE
 nm <- "myLogical"
 get(nm, envir = myEnvironment )
