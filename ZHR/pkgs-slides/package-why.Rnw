@@ -1,0 +1,271 @@
+\SweaveOpts{engine=R, keep.source=TRUE}
+\SweaveOpts{eps=FALSE, pdf=TRUE, width=9, height=6, strip.white=true}
+\SweaveOpts{prefix.string=fig/}
+<<preliminaries,echo=FALSE,results=hide>>=
+#set.seed(1); rm(list=ls()) # as we use ls() later
+options(SweaveHooks=
+        list(fig=function() par(mar=c(4.1, 4.1, 2.1, 3.1))),
+        width = 70, digits = 4, str=list(vec.len=2, strict.width="cut"))
+@
+
+% \bfrxx{\Rp{} packaging system}
+% \begin{compactitem}
+% \item Why package?
+% \item Structure of \Rp{} packages
+% \item Documentation
+% \item \code{package.skeleton()}
+% \item \code{CMD check} and \code{CMD build}
+% \item Distributing packages.
+% \end{compactitem}
+% \end{frame}
+
+\Subsec{Why Packaging R ?}
+\Bfr
+\Rp{} packages provide a way to manage collections of functions or
+data and their documentation.
+\begin{compactitem}
+\item Dynamically loaded and unloaded: the package only occupies memory
+  when it is being used.
+\item Easily installed and updated: the functions, data and
+  documentation are all installed in the correct places by a single
+  command that can be executed either inside or outside \Rp{}.
+\item Customizable by users or administrators: in addition to a site-wide
+  \emph{library}, users can have one or more private libraries of packages.
+\item Validated: \Rp{} has commands to check that documentation exists,
+  to spot common errors, and to check that examples actually run
+\end{compactitem}
+\end{frame}
+
+\BfrX{(2)}
+\begin{compactitem}
+\item Most users first see the packages of functions distributed
+  with \Rp{} or from \emph{CRAN}.  The package system allows many more
+  people to contribute to \Rp{} while still enforcing some standards.
+\item \textbf{Data} packages are useful for teaching: datasets can be made
+  available together with documentation and examples. For example,
+  Doug Bates translated data sets and analysis exercises from an
+  engineering statistics textbook into the \code{Devore5} package
+\item Private packages are useful to organise and store frequently used
+  functions or data.  One R author has packaged ICD9 codes, for example.
+\end{compactitem}
+\end{frame}
+
+\Subsec{Structure of R packages}
+\Bfr
+The basic structure of package is a \emph{directory} (aka ``folder''), commonly  containing
+\begin{compactitem}
+\item A \code{DESCRIPTION} file with descriptions of the package, author,
+  and license conditions in a structured text format that is readable by
+  computers and by people
+% \item An \code{INDEX} file listing all the functions and data (and
+%   optionally with other descriptive information). This can be generated
+%   automatically.
+\item A \code{man/} subdirectory of documentation files
+\item An \code{R/} subdirectory of \Rp{} code
+\item A \code{data/} subdirectory of datasets
+\item A \code{src/} subdirectory of \emph{C}, \emph{Fortran} or \emph{C++} source
+\end{compactitem}
+\end{frame}
+
+\BfrX{(cont)}
+Less commonly it contains
+\begin{compactitem}
+\item \code{inst/} for miscellaneous other stuff, notably \emph{package
+    ``vignettes''}
+\item \code{tests/} for validation tests
+\item \code{demo/} for \code{demo()}-callable demonstrations
+\item \code{po/} for message translation ``lists'' (from English, almost
+  always) to other languages.
+\item \code{exec/} for other executables (eg Perl or Java)
+\item A \code{configure} script to check for other required software or
+  handle differences between systems.
+\end{compactitem}
+Apart from \code{DESCRIPTION} these are all optional,
+though any useful package will have \code{man/} and at least
+one of \code{R/} and \code{data/}.
+
+Everything about packages is described in more detail in the
+\emph{Writing R Extensions} manual distributed with \Rp{}.
+\end{frame}
+
+\bfrxx{Data formats}
+
+The \code{data()} command loads datasets from packages. These can be
+\begin{compactitem}
+\item Rectangular text files, either whitespace or comma-separated
+\item \slan{} source code, produced by the \code{dump()} function in \Rp{} or \SPLUS.
+\item \Rp{} binary files produced by the \code{save()} function.
+\end{compactitem}
+The file type is chosen automatically, based on the file extension.
+\end{frame}
+
+\bfrxx{Documentation - Help files}
+%%                   vvvvvvvvvv Sweave BUG -- evaluating makes no *.tex  !!!!!!
+<<help-pdf-birthday, eval=FALSE>>=
+help(pbirthday, help_type = "pdf")
+@
+produces a \emph{nice} \href{file://pbirthday.pdf}{pdf version} of what you
+typically get by \texttt{?pbirthday}.
+
+The \Rp{} documentation format looks rather like \LaTeX.
+\begin{Sinput}
+\name{birthday}  % name of the file
+\alias{qbirthday} % the functions it documents
+\alias{pbirthday}
+\title{Probability of coincidences}% <== one-line title of documentation page
+\description{% short description:
+ Computes answers to a generalised \emph{birthday paradox} problem.
+  \code{pbirthday} computes the probability of a coincidence and
+  \code{qbirthday} computes the smallest number of observations needed
+  to have at least a specified probability of coincidence.
+}
+\usage{ % how to invoke the function
+qbirthday(prob = 0.5, classes = 365, coincident = 2)
+pbirthday(n, classes = 365, coincident = 2)
+}
+........
+\end{Sinput}
+\end{frame}
+
+\bfrxx{Documentation (2)}
+The file continues with sections
+\begin{compactitem}
+\item {\verb=\arguments=}, listing the arguments and their meaning
+\item {\verb=\value=}, describing the returned value
+\item {\verb=\details=}, a longer description of the function, if necessary.
+\item {\verb=\references=}, giving places to look for detailed information
+\item {\verb=\seealso=}, with links to related documentation
+\item {\verb=\examples=}, with \textbf{\emph{directly executable}} examples
+  of how to use the functions.
+\item {\verb=\keyword=} for indexing
+\end{compactitem}
+There are other possible sections, and ways of specifying equations, urls,
+links to other \Rp{} documentation, and more.
+\end{frame}
+
+\bfrxx{Documentation (3)}
+
+The documentation files can be converted into HTML, plain text,
+% GNU info format, PostScript,
+and (via \LaTeX) PDF.
+% They can also be converted into the old nroff-based \slan{} help format.
+
+The packaging system can check that all objects are documented, that
+the \code{usage} corresponds to the actual definition of the function,
+and that the \code{examples} will run.  This enforces a minimal level
+of accuracy on the documentation.
+\begin{compactitem}
+\item Emacs (ESS) supports editing of \Rp{} documentation (as does Rstudio and
+StatET).
+\item function \code{prompt()} and its siblings for producing such pages:
+<<prompt-family>>=
+apropos("^prompt")
+@
+% sapply(apropos("^prompt"),
+%        function(n) { cat(n,": "); str(get(n))}) -> .tmp
+\end{compactitem}
+NB: The \T{prompt*()} functions are called from \T{package.skeleton()}
+\end{frame}
+
+\Subsec{Setting up a package}
+\Bfr
+The \code{package.skeleton()} function partly automates setting up a
+package with the correct structure and documentation.
+
+The \code{usage} section from \code{help(package.skeleton)} looks like
+%% needs  R >= 2.15.0 (or 2.14.1 ?)
+% <<>>=
+% str(package.skeleton, width=60)
+% @
+\begin{Sinput}
+package.skeleton(name = "anRpackage", list = character(),
+     environment = .GlobalEnv, path = ".", force = FALSE,
+     namespace = TRUE, code_files = character())
+\end{Sinput}
+
+Given a collection of \Rp{} objects (data or functions) specified by a
+\code{list} of names or an \code{environment},
+or nowadays typically rather by a few \code{code\_files} (``*.R - files''),
+it creates a package called \emph{name} in the directory specified by
+\code{path}.
+
+The objects are sorted into data (put in \code{data/}) or functions
+(\code{R/}), skeleton help files are created for them using
+\code{prompt()} and a \code{DESCRIPTION} file, and from R 2.14.0 on, always
+a \code{NAMESPACE} file is created. The function
+then prints out a list of things for you to do next.
+\end{frame}
+
+\Subsec{Building a package}
+\Bfr
+\code{R CMD build} (\code{Rcmd build} on Windows) will create a
+compressed package file from your (source) package directory,
+also called ``tarball''.
+\smallskip
+
+It does this in a reasonably intelligent way, omitting object code,
+emacs backup files, and other junk.  The resulting file is easy to
+transport across systems and can be \code{INSTALL}ed without
+decompressing.
+\smallskip
+
+All help, R, and data files now are stored in ``data bases'', in
+compressed form. This is particularly useful on older Windows systems
+where packages with many small files waste a lot of disk space.
+\end{frame}
+
+\bfrxx{Binary and source packages}
+\code{CMD build} makes source packages (by default).
+If you want to distribute a
+package  that contains C or Fortran for Windows users, they may well
+need a binary package, as compiling under Windows requires downloading
+exactly the right versions of quite a number of tools.
+%The \Rp{} for Windows FAQ describes this process.
+
+Binary packages are created by \code{R CMD INSTALL}ing with the extra option
+\code{--build}.  This produces a \code{<pkg>.zip} file which is basically
+a zip archive of \code{R CMD INSTALL}ing the package.
+
+(In earlier R versions, binary packages were created by
+ \code{R CMD build}ing with the extra option \code{--binary}.
+ This may still work, but do not get into the habit!)
+\end{frame}
+
+\Subsec{Checking a package}
+\Bfr
+\code{R CMD check} (\code{Rcmd check} in Windows) helps you do
+QA/QC\footnote{QA := Quality Assurance; QC := Quality Control} on
+packages.
+\begin{compactitem}
+\item The directory structure and the format of \code{DESCRIPTION}
+  (and possibly some sub-directories) are checked.
+\item The documentation is converted into text, HTML, and \LaTeX,
+  and run through \texttt{pdflatex} if available.
+\item The examples are run
+\item Any tests in the \code{tests/} subdirectory are run
+  (and possibly compared with previously saved results)
+\item Undocumented objects, and those whose \code{usage} and
+  definition disagree are reported.
+\item \dots\dots
+\item (the current enumeration list in ``Writing R Extensions''
+  goes up to number \textbf{21} !!)
+\end{compactitem}
+\end{frame}
+
+\Subsec{Distributing packages}
+\Bfr
+If you have a package that does something useful and is well-tested
+and documented, you might want other people to use it too.
+Contributed packages have been very important to the success of \Rp{}
+(and before that of \slan{}).
+
+Packages can be submitted to \emph{CRAN} %by ftp.
+\begin{compactitem}
+\item The \emph{CRAN} maintainers will make sure that the package
+  passes \code{CMD check} (and will keep improving \code{CMD check} to
+  find more things for you to fix in future versions :-)).
+\item Other users will complain if it doesn't work on more esoteric
+  systems and no-one will tell you how helpful it has been.
+\item But it will be appreciated. Really.
+\end{compactitem}
+\end{frame}

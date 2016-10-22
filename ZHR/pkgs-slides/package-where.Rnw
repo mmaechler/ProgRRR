@@ -1,0 +1,148 @@
+\SweaveOpts{engine=R, keep.source=TRUE}
+\SweaveOpts{eps=FALSE, pdf=TRUE, width=9, height=6, strip.white=true}
+\SweaveOpts{prefix.string=fig/}
+<<preliminaries,echo=FALSE,results=hide>>=
+options(SweaveHooks=
+        list(fig=function() par(mar=c(4.1, 4.1, 2.1, 3.1))),
+        width = 70, digits = 4)
+@
+\begin{frame}[fragile]{Intermezzo: Browse CRAN}
+  Number of CRAN (source) packages:
+  \emph{Exponential} growth for about 15 years;
+  %% FIXME: use \Sexpr{} for this ==> need R code from ~/R/MM/MISC/CRAN-stats/pkg-counts.R
+   number 9000 hit on August 23, 2016
+  % number 7000 hit on August 14, 2015
+  %% number 4000 hit on August 30, 2012
+  %% number 3333 hit a few weeks ago, i.e., Sept.~2011
+    \par\vspace*{-2mm}
+    \begin{center}
+    \includegraphics[width=0.85\textwidth]{nrCRANpkg}
+    %% \includegraphics[width=0.56\textwidth]{CRAN-pkg-growth_m}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Browse CRAN --- CRAN Task Views}
+<<do-wide, echo=FALSE>>=
+op <- options(width= 73)# since we use small font then
+<<ctv-do, echo=FALSE, results=hide>>=
+require("ctv")
+av <- available.views()
+@
+%%  CRAN Task Views:
+  \begin{compactitem}
+  \item allow to browse packages \emph{by topic}
+  \item tools to automatically \emph{install} all packages for areas of interest.
+  \item Currently, \Sexpr{length(av)} views are available:
+\setSoutput{\scriptsize}% {\tiny} would be even smaller (too small
+<<ctv-show, eval=FALSE>>=
+<<ctv-do>>
+<<ctv-do-2>>=
+unname(abbreviate( ## <<- compacter for the slide
+    sapply(av, `[[`, "name"),    min = 19, dot=TRUE))
+<<ctv-do-3, echo=FALSE>>=
+options(op)# reset to smaller width
+@
+\setSoutput{\footnotesize}% reset size
+  \end{compactitem}
+\end{frame}
+
+\begin{frame}[fragile]{Browse CRAN}
+  Many CRAN mirrors; ``of course'' we use the Swiss mirror
+  (= \url{http://stat.ethz.ch/CRAN}):
+  \begin{compactitem}
+  \item The CRAN Task Views web page:
+    \url{https://stat.ethz.ch/CRAN/web/views/}
+  \item Package \emph{developers} may like --- or hate ---
+    \url{https://stat.ethz.ch/CRAN/web/checks/check_summary.html}
+  \item Other ``summaries'': ``Metacran''($=$ \url{http://www.r-pkg.org/}),
+    \url{http://Crantastic.org}, ``MRAN'' from Revolution, \dots
+  \end{compactitem}
+\end{frame}
+
+\begin{frame}[fragile]{Installing packages from CRAN}
+  \begin{itemize}
+  \item Via the ``Packages'' menu (in GUIs for R such as RStudio)
+  \item Directly via \code{install.packages()}\footnote{which is called
+      anyway from the menu functions}.
+
+   \ul{Syntax}: \par \smallskip
+   \Ts{install.packages(\farg{pkgs},\farg{lib},\farg{repos= getOption("repos")}, \ldots)}
+   \par\smallskip
+
+   \begin{description}
+   \item[\farg{pkgs}:] character vector names of packages whose current
+     versions should be downloaded from the repositories.
+   \item[\farg{lib}:] character vector giving the library directories where to
+     install the packages.  If missing, defaults to \code{.libPaths()[1]}.
+   \item[\farg{repos}:] character with  base URL(s) of the repositories to use,
+     typically from a CRAN mirror.
+     You can choose it interactively via \code{chooseCRANmirror()} or explicitly
+     by \code{options(repos= c(CRAN="http://..."))} .
+   \item[\farg{\ldots}:] many more (\emph{optional}) arguments.
+   \end{description}
+ \end{itemize}
+\end{frame}
+
+\bfrxx{Installing packages -- Examples}
+  \begin{itemize}
+  \item Install once, then use it via \code{require()} or \code{library)}:
+   \par\smallskip
+<<install-pkg, eval=false>>=
+chooseCRANmirror()
+install.packages("sfsmisc")
+
+## For use:
+require(sfsmisc) # to ``load and attach'' it
+@
+\item
+<<install-pkg-2, eval=false>>=
+install.packages("sp", # using default 'lib'
+       repos = "http://cran.CH.r-project.org")
+@
+\item or into a non-default \emph{library} of packages
+   \par\smallskip
+<<install-pkg-3, eval=false>>=
+install.packages("sp", lib = "my_R_folder/library",
+       repos = "http://cran.CH.r-project.org")
+## and now load it from that library (location):
+library(sp, lib = "my_R_folder/library")
+@
+\item Note: If \code{lib} is not a writable directory, \Rp{} offers to
+  create a personal library tree (the first element of
+  \code{Sys.getenv("R\_LIBS\_USER")}) and install there.
+\end{itemize}
+\end{frame}
+
+\bfrxx{\ul{Finding} functionality in CRAN packages}
+\dots instead of re-inventing the wheel
+\begin{compactitem}
+\item \texttt{help.search(foo)} ($\longleftrightarrow$
+  \texttt{??foo}\footnote{$\to$ very nice in ESS!},  or
+  ``Search'' in R-\texttt{help.start()} Web browser,
+  finds things in all \emph{installed} packages
+\item \texttt{RSiteSearch()} searches \href{http://search.r-project.org}{search.r-project.org}
+\item  \href{https://www.r-project.org/search.html}{R Project $\to$ search}
+  mentions the above, and more, including \url{http://www.rseek.org}
+\item CRAN Task Views (see above)
+\item R-forge - for R package developers \url{https://r-forge.r-project.org}
+  also has search functionality
+\item ``Metacran''($=$ \url{http://www.r-pkg.org/})
+\item \dots Google
+\end{compactitem}
+
+\end{frame}
+
+\bfrxx{Not re-inventing the wheel \dots}
+\begin{compactitem}
+  \item Asking on R-help, the ``general R'' mailing list, \\
+    or on \texttt{R-package-devel} devoted to help package writing
+    \emph{and checking} problems, see
+    \url{https://www.r-project.org/mail.html} .
+    \\
+    \Arrow\ many readers are helpful, and some are experts :-)
+  \item ``Stack Overflow'', ``tagged `r''':
+    \url{http://stackoverflow.com/questions/tagged/r} (notably for precise
+    technical questions)
+  \item The  \ R-devel \ mailing list  if you are really advanced
+\end{compactitem}
+\end{frame}

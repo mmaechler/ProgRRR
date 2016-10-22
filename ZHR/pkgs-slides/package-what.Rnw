@@ -1,0 +1,218 @@
+\SweaveOpts{engine=R, keep.source=TRUE, prefix.string=fig/}
+\SweaveOpts{pdf=TRUE, width=9, height=6, strip.white=true, encoding=utf8}
+<<preliminaries,echo=FALSE,results=hide>>=
+options(width=75)
+@
+
+
+%%--- nice handout for this in addition!
+\Subsec{The many ``kinds'' of R packages:}
+\Bfr
+\begin{center}
+\par\vspace*{-1.5ex}
+% to draw (and modify):    dia R-pkgs.dia  -- then 'export' as eps, then ' epstopdf R-pkgs.eps '
+\includegraphics[width=0.78\textwidth]{R-pkgs.pdf}% R-pkgs.eps is ok:
+%\includegraphics[width=0.82\textwidth]{R-pkgs}
+\end{center}
+\end{frame}
+
+
+\Subsec{Packages: Where you get your R objects from}
+\Bfr
+\begin{itemize}
+\item
+  In R, by default you ``see'' only a basic set of functions,
+  e.g., \\ \T{c}, \T{read.table}, \T{mean}, \T{plot}, \dots, \dots.
+\item They are found in your ``\ul{search path}'' of packages
+\par\medskip
+<<clean-search,echo=false>>=
+tpkgs <- c("fortunes", "sfsmisc")
+for(pkg in paste("package", tpkgs, sep=":"))
+    if(any(pkg == search())) detach(pkg, character.only=TRUE)
+<<search-and-ls>>=
+search() # the first is "your workspace"
+ls(pos=1) # == ls()  ~= "your workspace" - learned in  "introduction"
+str(ls(pos=2)) # content of the  2nd  search() entry
+str(ls(pos=9)) # content of the  9th  search() entry
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]%-- packages --
+\begin{itemize}
+\item
+  The default list of R objects (functions, some data sets) is actually not
+  so small: Let's call \code{ls()} on each \code{search()} entry:
+\par\medskip
+<<ls-functions-default>>=
+ls.srch <- sapply(grep("^package:", search(), value = TRUE),
+                      # "package:<name>" entries
+                  ls, all.names = TRUE)
+fn.srch <- sapply(ls.srch, function(nm) {
+    nm[ sapply(lapply(nm, get), is.function) ] })
+rbind(cbind(ls   = (N1 <- sapply(ls.srch, length)),
+            funs = (N2 <- sapply(fn.srch, length))),
+      TOTAL = c(sum(N1), sum(N2)))
+@
+\begin{flushright}
+%gave, 2297 functions in R version 2.11.1.
+i.e., \Sexpr{sum(N2)} functions in
+R version \Sexpr{with(R.version, paste(major, minor, sep="."))}
+\end{flushright}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]% --- packages 2b ---
+\begin{itemize}
+\item
+Till now, we have used functions from
+packages ``\texttt{base}'', ``\texttt{stats}'',  ``\texttt{utils}'', ``\texttt{graphics}'',
+and  ``\texttt{grDevices}'' without a need to be aware of that.
+
+\pause
+\item \T{find("$\langle$\textit{name}$\rangle$")} can be used:
+\par\medskip
+<<find>>=
+c(find("print"), find("find"))
+## sophisticated version of  rbind(find("mean"), find("quantile"), ....):
+cbind(sapply(c("mean", "quantile", "read.csv", "plot"),
+             find))
+@
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]% --- packages 2 ---
+<<high-priority-packages, echo=false>>=
+ip.H <- installed.packages(lib.loc = .Library, priority = "high")
+baseP <- rownames(ip.H)[ip.H[,"Priority"] == "base"]
+recoP <- rownames(ip.H)[ip.H[,"Priority"] == "recommended"]
+@
+  \begin{itemize}
+  \item R already comes with $\Sexpr{length(baseP)} + \Sexpr{length(recoP)}
+    = \Sexpr{length(baseP)+length(recoP)}$ packages pre-installed,
+    namely the ``standard (or ``base'') packages
+\par\medskip
+%% echo=false -- dann kann ich hemmungslos Tricks verwenden:
+<<standard-packages, echo=false>>=
+printPs <- function(ch, wid = 60)
+    writeLines(strwrap(paste(ch, collapse=", "), wid, prefix= "  "))
+printPs(baseP)
+@
+%  [1] "base"      "datasets"  "graphics"  "grDevices" "grid"
+%  [6] "methods"   "splines"   "stats"     "stats4"    "tcltk"
+% [11] "tools"     "utils"
+
+\medskip  \pause and the ``recommended'' packages
+\par\smallskip
+<<recommended-pkgs, echo=false>>=
+printPs(recoP)
+@
+%\footnote{}.
+%  \\
+%%--- now we can count, how many functions there are in all base +
+%%--- recommended packages
+%%  (this would not count S4 methods, would it ?)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]% --- packages 3 ---
+  \begin{itemize}
+  \item
+  Additional functions (and datasets) are obtained by \\
+  (possibly first \emph{installing} and then) loading additional ``packages''.
+
+  \item
+  \Sc{library(MASS)} \quad or \quad\T{require(MASS)}
+  \item
+  How to find a command and the corresponding package?\\
+    \Sc{help.search("...")}\footnote{can
+      take l..o..n..g.. (only the first time it's called in an R session !)},
+    \ (see Intro)
+  \item On the internet: CRAN (\url{http://cran.r-project.org}, see
+    %% The points to slide 1 instead of slide 15  --- AND that slide disappears (!??!)
+    %% \\ \hyperlink{intro:CRAN-etc}{\beamergotobutton{Resources on the internet (slide 15)}}
+    \ \beamergotobutton{Resources on the internet (slide 15)} \
+    is a huge repository\footnote{actually a distributed Network with a
+      server and many mirrors,} of R packages, written by many experts.
+   \item More search possibilities
+     \url{http://www.r-project.org/search.html} \quad (\emph{before} using Google!)
+
+  \item  \href{http://stat.ethz.ch/CRAN/web/views/}{\underline{CRAN Task Views}} help
+    find packages by application area
+  \item What does a package do?\\
+    \Sc{help(package = class)} \ \ or ($\longleftrightarrow$) % equivalently
+  \\ \Sc{library(help = class)}.
+
+Example (of small recommended) package:
+\smallskip
+%% -- this goes to standard error -- not (yet) in LaTeX for slide:
+<<help-pkg, eval=false>>=
+help(package = class)
+@
+\end{itemize}
+\end{frame}
+
+\ifLongcourse%----------------------------------------------------
+\begin{frame}[fragile]
+\begin{Schunk}
+\begin{Sinput}
+> help(package = class)
+\end{Sinput}
+%%--- Ugly: I currently need to cut & paste   from R
+\begin{Soutput}
+		Information für Paket 'class'
+
+Description:
+
+Package:            class
+Priority:           recommended
+Version:            7.3-3
+Date:               2010-12-06
+Depends:            R (>= 2.5.0), stats, utils
+Imports:            MASS
+Author:             Brian Ripley <ripley@stats.ox.ac.uk>.
+Maintainer:         Brian Ripley <ripley@stats.ox.ac.uk>
+Description:        Various functions for classification.
+Title:              Functions for Classification
+License:            GPL-2 | GPL-3
+URL:                http://www.stats.ox.ac.uk/pub/MASS4/
+LazyLoad:           yes
+Packaged:           2010-12-06 11:46:04 UTC; ripley
+Repository:         CRAN
+Date/Publication:   2010-12-09 11:56:32
+Built:              R 2.12.0; x86_64-unknown-linux-gnu; 2010-12-10 03:02:42 UTC; unix
+\end{Soutput}
+\end{Schunk}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{Schunk}
+\begin{Soutput}
+Index:
+
+SOM                     Self-Organizing Maps: Online Algorithm
+batchSOM                Self-Organizing Maps: Batch Algorithm
+condense                Condense training set for k-NN classifier
+knn                     k-Nearest Neighbour Classification
+knn.cv                  k-Nearest Neighbour Cross-Validatory
+                        Classification
+knn1                    1-nearest neighbour classification
+lvq1                    Learning Vector Quantization 1
+lvq2                    Learning Vector Quantization 2.1
+lvq3                    Learning Vector Quantization 3
+lvqinit                 Initialize a LVQ Codebook
+lvqtest                 Classify Test Set from LVQ Codebook
+multiedit               Multiedit for k-NN Classifier
+olvq1                   Optimized Learning Vector Quantization 1
+reduce.nn               Reduce Training Set for a k-NN Classifier
+somgrid                 Plot SOM Fits
+\end{Soutput}
+\end{Schunk}
+\end{frame}
+\fi%-LongCourse-----------------------------------------------------
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "slides"
+%%% End:
