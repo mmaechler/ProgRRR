@@ -1,7 +1,7 @@
 ---
 title: Functions
 layout: default
-output: bookdown::html_chapter
+output: html_output
 ---
 
 # Functions

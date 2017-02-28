@@ -6,9 +6,10 @@
 #### http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
 #### ===========================================================
 
-### Early section
-### "Play time with Environments (don’t skip me)"
-###  -------------------------------------------
+### Part 1: The early section
+###	"Play time with Environments (don’t skip me)"
+###      -------------------------------------------
+### Modified by Martin Maechler, ETH Zurich
 
 ## environments are just objects.  lets create one.
 myEnvironment  <- new.env()
@@ -105,6 +106,7 @@ ls( envir = myEnvironment )
 
 ## We can retrieve any named object from any given environment using the get() function
 get( "myLogical", envir = myEnvironment )
+myEnvironment$myLogical # equivalently
 ## [1] FALSE  TRUE
 nm <- "myLogical"
 get(nm, envir = myEnvironment )

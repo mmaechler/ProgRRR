@@ -1,13 +1,11 @@
 ---
 title: "Namespaces - why"
 author: "Martin Maechler"
-date: "September 2015; update Oct 2016""
+date: "September 2015; last update Oct.20, 2016"
 output: ioslides_presentation
 ---
 
 ## Why do we need  **namespaces** in R ?
-
-_Note_: The source is in MM's `r current_input(dir=TRUE)`
 
 Short answer: __To prevent name conflicts and to allow modular programming in packages__
 
@@ -24,7 +22,7 @@ all.equal(dnorm(x), mydnorm(x))
 ```
 
 ##
-So our function `mydnorm()` is ok,  
+So our function `mydnorm()` is ok,
 the same as the R builtin  `dnorm()`.  But it is _less_ safe :
 
 ```{r}
@@ -83,6 +81,34 @@ from "re-definitions" in "globalenv" or other packages:
 - The package also can use many **helper**  functions and only **export** the main functions
 - Consequence: Much more modular programming; clean interfaces
 
+## Namespaces --  `::` (and `:::`)
+Here, our `mydnorm()` is not in a package, but we can still __protect__ it
+from redefinition of `pi`, because we can use the __pkg__`::`__name__
+notation:
+```{r, two-pis}
+c(pi, base::pi)
+```
+and replace  `pi`  by  `base::pi` within the `body` of our `mydnorm`:
+```{r, fixed-body}
+dnormOk <- mydnorm
+body(dnormOk) <- do.call(substitute,
+                         list(body(mydnorm), list(pi = quote(base::pi))))
+```
+where we have seen the very powerful combination of two important R functions,
+`do.call()` and `substitute()`.
+
+## The `dnormOK()` solution continued
+```{r dnorm-fixed, collapse=TRUE}
+dnormOk
+all.equal(dnormOk(x), dnorm(x))
+```
+so `normOk` is ok, in spite of `pi` which of course still breaks `mydnorm()`:
+```{r mydnorm-still-broken, collapse=TRUE}
+pi
+t <- -2:2; rbind(t, dnormOk(t), mydnorm(t))
+```
+
+
 ## Packages & namespaces in R session
 ```{r, session-show, eval=FALSE}
 sessionInfo() ## note the  " loaded via namespace (and not attached) "
@@ -99,3 +125,4 @@ print( sI <- sessionInfo() , locale=FALSE)
 capture.and.write(sI, first = 1, last = 12)
 ```
 
+_Note_: The source is in MM's `r knitr::current_input(dir=TRUE)`

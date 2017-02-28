@@ -2,7 +2,7 @@
 title: Functionals
 layout: default
 output: 
-  - bookdown::html_chapter
+  - html_output
   - bookdown::pdf_chapter
 ---
 

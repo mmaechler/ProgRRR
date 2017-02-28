@@ -1,7 +1,9 @@
 ---
 title: Data structures
 layout: default
-output: bookdown::html_chapter
+output:
+  html_document:
+    keep_md: yes
 ---
 
 # Data structures {#data-structures}

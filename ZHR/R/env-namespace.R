@@ -1,11 +1,10 @@
-### Week 6 ---- "How R Searches and Finds Stuff" -- part 2 -------
-
+#### ---- "How R Searches and Finds Stuff" -- part 2 --- Extended by M.Maechler
+####       ------------------------------
 
 (e <- environment( mean )) # namespace:base
 parent.env(e)# globalenv of course (because 'e' is)
 try( asNamespace("package:base") ) # but
-try( asNamespace("base") ) # but
-
+     asNamespace("base") # works
 
 ##--
 nm.stats <- environment( lm ) # <environment: namespace:stats>
@@ -14,8 +13,8 @@ str(L2 <- ls("package:stats"))  # chr [1: 446] "acf" "acf2AR" "add.scope" "add1"
 str(intersect(L1, L2))
 identical(L2, intersect(L1, L2)) # TRUE
 ## L2 is true subset of L1
-setdiff(L1, L2)
-setdiff(L2, L1) ## 600 something objects, e.g., coef.default
+setdiff(L1, L2) ## 600 something objects, e.g., coef.default
+setdiff(L2, L1) ## 0 obj.
 
 identical(asNamespace("stats"), nm.stats) # TRUE
 (pkg.stats <- as.environment("package:stats"))
@@ -49,15 +48,17 @@ require(Rmpfr)##--> Messages
 
 ##--------------
 asNamespace("MASS")
-(IM <- parent.env( asNamespace("MASS") ))
+(IM <- parent.env( asNamespace("MASS") )) # ->  imports:MASS
+       ## = everything that MASS imports
 ls(IM) ## 118 objects -- many from 'stats'
 ##-- as we have seen in the source's  MASS/NAMESPACE file
 
 
-svn ci -m'split(.., lex.order) --> boxplot.formula() ditto'
-svn-diffB doc/NEWS.Rd src/library/base/man/split.Rd src/library/base/R/split.R src/library/base/R/dates.R src/library/base/R/datetime.R src/library/graphics/R/boxplot.R src/library/graphics/man/boxplot.Rd tests/Examples/graphics-Ex.Rout.save
-
 ## --- New *after* 2016 lecture : --------
+##' @title Collect all Parents of an Environment
+##' @param e any 'environment'
+##' @return a (named) list of environments: The "full chain" from 'e'
+##' @author Martin Mächler
 allParents <- function(e) {
     r <- e ## r := {collection of environments we encounter}
     EE <- emptyenv()
@@ -68,11 +69,14 @@ allParents <- function(e) {
     r <- c(r, EE)
     setNames(r, vapply(r, environmentName, ""))
 }
-
+try( rm(lm))
 ap1 <- allParents(environment(lm))
-str(ap1) # maybe "too muchl" --> use
+ap1 # maybe "too muchl" --> use
 str(ap1, give.attr=FALSE)
-## now we know that already:
-ap1[[length(ap1) - 2]] ## the 'Autoloads'
+
+
+## now we (may or may not) know that already:
+(AutoL <- ap1[[length(ap1) - 2]]) # the 'Autoloads'
+identical(AutoL, .AutoloadEnv)    # indeed
 
 
