@@ -1,0 +1,161 @@
+---
+title: Speed of  Data frame  vs.  Matrix
+output: html_document
+author: William Dunlap and Martin Maechler
+---
+
+Started from an E-mail
+
+William Dunlap | R-help mailing list | 17 Mar 00:36 2014 | Subject: Re: **data frame vs. matrix**
+[http://permalink.gmane.org/gmane.comp.lang.r.general/307163](Gmane "mirror"
+of R-help archive)
+
+MM, 2016: From the timings below, note how **much faster** R is two years later!
+
+```{r, echo=FALSE}
+require(knitr)
+opts_chunk$set(comment = NA, ## do not prepend all outputs with "##"
+               tidy=FALSE)   ## do leave the source as _I_ have formatted them
+## tidy=FALSE : important here, because it even *wraps* some comments into one line
+```
+
+Duncan Murdoch's analysis suggests another way to do this:
+extract the `x` vector, operate on that vector in a loop,
+then insert the result into the data.frame.  I added
+a `df="quicker"` option to your `df` argument and made the test
+dataset deterministic so we could verify that the algorithms
+do the same thing:
+
+```{r, dumkoll-def}
+dumkoll <- function(n = 1000, df = TRUE){
+        dfr <- data.frame(x = log(seq_len(n)), y = sqrt(seq_len(n)))
+        if (identical(df, "quicker")) {
+                x <- dfr$x
+                for(i in 2:length(x)) {
+                        x[i] <- x[i-1]
+                }
+                dfr$x <- x
+        } else if (df){
+                for (i in 2:NROW(dfr)){
+                        # if (!(i %% 100)) cat("i = ", i, "\n")
+                        dfr$x[i] <- dfr$x[i-1]
+                }
+        }else{
+                dm <- as.matrix(dfr)
+                for (i in 2:NROW(dm)){
+                        # if (!(i %% 100)) cat("i = ", i, "\n")
+                        dm[i, 1] <- dm[i-1, 1]
+                }
+                dfr$x <- dm[, 1]
+        }
+        dfr
+}
+```
+
+(Bill Dunlap:)
+Timings for $10^4$, $2* 10^4$, and $4* 10^4$ show that the time is quadratic
+in n for the df=TRUE case and close to linear in the other cases, with
+the new method taking about 60% the time of the matrix method:
+```{r, sapply-3n-system.time}
+n <- c("10k"=1e4, "20k"=2e4, "40k"=4e4)
+sapply(n, function(n) system.time(dumkoll(n, df=FALSE))[1:3])
+## BD:           10k  20k  40k
+##    user.self 0.11 0.22 0.43
+##    sys.self  0.02 0.00 0.00
+##    elapsed   0.12 0.22 0.44
+
+sapply(n, function(n)system.time(dumkoll(n, df=TRUE))[1:3])
+## BD:           10k   20k   40k
+##    user.self 3.59 14.74 78.37
+##    sys.self  0.00  0.11  0.16
+##    elapsed   3.59 14.91 78.81
+
+sapply(n, function(n)system.time(dumkoll(n, df="quicker"))[1:3])
+# BD:           10k  20k  40k
+#    user.self 0.06 0.12 0.26
+#    sys.self  0.00 0.00 0.00
+#    elapsed   0.07 0.13 0.27
+```
+I also timed the 2 faster cases for n=10^6 and the time still looks linear
+in n, with vector approach still taking about 60% the time of the matrix
+approach.     ((NB vvvvvvvvvv  `knitr` feature))
+```{r, system-1e6, cache=TRUE}
+system.time(dumkoll(n=10^6, df=FALSE))
+# BD:   user  system elapsed
+#      11.65    0.12   11.82
+
+system.time(dumkoll(n=10^6, df="quicker"))
+# BD:   user  system elapsed
+#       6.79    0.08    6.91
+```
+
+The results from each method are identical:
+```{r, check-identical}
+identical(dumkoll(100,df=FALSE), dumkoll(100,df=TRUE))
+identical(dumkoll(100,df=FALSE), dumkoll(100,df="quicker"))
+```
+
+If your data.frame has columns of various types, then `as.matrix` will
+coerce them all to a common type (often character), so it may give
+you the wrong result in addition to being unnecessarily slow.
+
+Bill Dunlap
+TIBCO Software
+wdunlap tibco.co
+
+```{r, Rprof}
+Rprof("dumkoll.Rprof") # start profiling
+dd <- dumkoll(10000, df=TRUE)
+Rprof(NULL) # stop profiling
+## ?Rprof
+sr <- summaryRprof("dumkoll.Rprof")
+sr
+```
+So, indeed, the culprit is `$<-`, and specifically almost only the `data.frame` method of that.
+
+A "free" way to increase performance of R functions:
+R's byte compiler:
+```{r, compiler, results="hide"}
+require(compiler)
+```{r, help-compiler, eval=FALSE}
+help(package = "compiler")# fails to give anything (Rstudio bug !)
+library(help = "compiler")# the old fashioned way works fine
+```
+
+These are not evaluated (when the *.Rmd is knit into Markdown):
+```{r, help-comp, eval=FALSE}
+?cmpfun # interesting, notably
+example(cmpfun) # shows indeed speedups of almost 50% in one case (on MM's notebook)
+```
+So, we now can compile our function and see how much that helps:
+```{r, cmpfun}
+dumkoll2 <- cmpfun(dumkoll)
+```{r, results="hide"}
+require(microbenchmark)
+```
+Let's use a somewhat small n
+```{r, plot-microbenchmark}
+n <- 2000
+mbd <- microbenchmark(dumkoll(n),               dumkoll2(n),
+                      dumkoll(n, df=FALSE),     dumkoll2(n, df=FALSE),
+                      dumkoll(n, df="quicker"), dumkoll2(n, df="quicker"), times = 25)
+mbd
+plot(mbd, log="y")
+```
+
+Wow, I'm slightly surprised that the compiler helped quite a bit, notably for the faster solutions (matrix and vector "[<-" calls).
+<!-- MM: really smart would be to use  toLatex() if output format is latex;
+   and print() for html etc:-->
+```{r, sessionInfo}
+print(sessionInfo(), locale=FALSE)
+structure(Sys.info()[c("nodename","sysname", "version")], class="simple.list")
+```
+```{r, echo=FALSE, eval=FALSE}
+## In R, after knit(), use __manually__  [not ok, directly, any more ...!]
+
+owd <- setwd("~/Vorl/R/Progr_w_R") # because of the figure/
+pandoc("matrix_df_timing.md", format="latex")
+system("evince week6_timing-ex.pdf &")
+setwd(owd)# reset working directory
+
+```

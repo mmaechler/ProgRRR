@@ -1,0 +1,33 @@
+---
+title: "Packages in search()"
+author: "Martin Maechler, ETH Zurich"
+date: "March 7, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Packages (that one slide of "Using R")
+
+The default list of R objects (functions, some data sets) is actually not so small: Let's call `ls()` on each `search()` entry:
+```{r functions, echo=TRUE}
+ls.srch <- sapply(grep("package:", search(),
+                       value=TRUE), # "package:<name>" entries
+                  ls, all.names = TRUE)
+fn.srch <- sapply(ls.srch, function(nm) {
+    nm[ sapply(lapply(nm, get), is.function) ] })
+rbind(cbind(ls   = (N1 <- sapply(ls.srch, length)),
+            funs = (N2 <- sapply(fn.srch, length))),
+      TOTAL = c(sum(N1), sum(N2))) -> res
+```
+i.e., `r sum(N2)` functions in
+R version `r with(R.version, paste(major, minor, sep="."))`
+
+(Past: had 2297 in version 2.11.1,  2348 in 2.14.0,  2332 in 3.0.2
+
+----
+```{r function show}
+res
+```

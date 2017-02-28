@@ -4,6 +4,7 @@
 * *Lecturer*: [Martin Mächler, Seminar für Statistik, ETH Zürich)](https://stat.ethz.ch/~maechler)
 * *Duration*: 2 days
 * *Date & Time*:
+<<<<<<< Updated upstream
 
 	- 20.Oct.2016, 9:00--17:00  (2 coffee breaks, lunch break)
 	- 21.Oct.2016, 9:00--~16:30            ditto
@@ -12,6 +13,15 @@
   Zentrum for Weiterbildung, Schaffhauserstrasse 228
   Tram 10 or 14, exit at "Berninaplatz".
   [Anreise](http://www.zwb.uzh.ch/anreise.html).
+=======
+ + 20.Oct. 2016, 9:00--17:00  (2 coffee breaks, lunch break)
+ + 21.Oct. 2016, 9:00--~16:30            ditto
+
+* *Venue* (@ Zürich Oerlikon) :
+  Zentrum for Weiterbildung, Schaffhauserstrasse 228  
+  Tram 10 or 14, exit at "Berninaplatz",
+  [Map etc](http://www.zwb.uzh.ch/anreise.html).
+>>>>>>> Stashed changes
 
 
 * *Target audience*:
