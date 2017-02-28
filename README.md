@@ -4,7 +4,7 @@
 ## Teaching and Learning Material on Progr.R^3
 
 ### R Material
-- To contain R scripts (currently [ZH R Course](ZHR/R)
+- To contain R scripts, currently [ZH R Course](ZHR/R) and [ETH lecture](ETH/R) 
 - Rmd, and Rnw (markdown and Sweave/knitr) scripts
 - R scripts (extracted and extended by MM) from the ["How R Searches ..."](http://blog.obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/) blog:
   - [Part 1: environments & `parent.env()`](ZHR/R/How-R-Searches--env1.R)
