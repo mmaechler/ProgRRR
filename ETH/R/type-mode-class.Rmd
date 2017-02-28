@@ -1,7 +1,7 @@
 ---
 title: Language Objects in R
 author: Martin Maechler
-date: "Aug. 28, 2015  (last change: Oct.13, 2016)"
+date: "Aug. 28, 2015  (last change: `r Sys.Date()`)" # format(Sys.time(), "%H:%M:%OS3")
 output:
   html_document:
     highlight: tango
@@ -51,11 +51,11 @@ to see how these R objects, are categorized by the different "inspection" functi
 <!-- FIXME: start with expression(..., .., .., ) instead of list(.., ) ==> -->
 <!-- even nicer table-->
 ```{r l.ex}
-l.ex <- list(one=1, s1= 1:2, pi=pi, I=1i, let= c("A", "a", "b", ":::"),
+l.ex <- list(one = 1, s1 = 1:2, pi = pi, I = 1i, `NA` = NA, let = c("A", "a", "b", ":::"),
              fn = mean, fn2 = c, fnSpec = `function`,
              n = as.name("Mä"), n2 = quote(x), ex = expression(1+1),
              cl = call("round",10), cl2 = quote(sin(x)), formula = y ~ x+t, 
-			 formals = formals(lm), arg1 = formals(lm)[[1]])
+			 formals = formals(lm), arg1 = formals(lm)[[1]], NULL = NULL)
 str(l.ex, vec.len = 16, max.level = 1)
 ```
 
@@ -64,10 +64,10 @@ myShow <- function(x, max.length= 1000L) {
     r <- tryCatch(format(x), error=function(e)e)
     r <- if(inherits(r, "error"))
              tryCatch(as.character(x), error=function(e)e)
-         else paste(r, collapse=" ")
+         else paste(r, collapse = " ")
     r <- if(inherits(r, "error"))
              tryCatch(capture.output(x), error=function(e)e)
-         else paste(r, collapse=" ")
+         else paste(r, collapse = " ")
     substr(r, 1L, max.length)
 }
 
@@ -82,5 +82,7 @@ let's be "advanced" and use a `knitr` package feature to produce "raw markdown" 
 ```{r table-show, results='asis'}
 knitr::kable(tab.ex, format="pandoc")
 ```
-
+```{r session-info}
+print(sessionInfo(), locale=FALSE)
+```
 _Note_: The source of this document is MM's `r knitr::current_input(dir=TRUE)`
