@@ -1,13 +1,25 @@
 ##__ Original : Norm Matloff's  "Art of R ..."  Code/Ch7/envexample1.R
 
-###--- Lexical Scoping ("Syntactic": *where* is the function defined) -----------------------
-##
+###--- Lexical Scoping ("Syntactic": *where* is the function defined) -----------------
+##     ===============
 ## h() finds 'd' inside f()  and finds 'w'   in  globalenv()
+##
 f <- function(y) {
-     h <- function() {
-       print(ls(environment()))
-       return(d*(w+y))
-   }
+
+  h <- function() d*(w+y)
+  d <- 8
+  h() ## is the same as
+      ## return(h())
+}
+
+if(FALSE) ## not yet at beginning --- the same but showing environments!
+f <- function(y) {
+
+  h <- function() {
+      print(ls(environment()))
+      return(d*(w+y))
+  }
+
   print(ls(environment(h)))
   d <- 8
    ## h's environment is the local environment() of f(); ==> also contains 'd'
@@ -17,7 +29,7 @@ f <- function(y) {
    cat("inside f - the same as '(h)':"); print(ls(environment()))
    cat("environment(f) [=globalenv]: "); print(ls(environment(f))) # = Globalenv
 
-   return(h())
+   h()
 }
 
 w <- 10
