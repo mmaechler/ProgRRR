@@ -35,7 +35,10 @@
 ### Week 3
 
  - Recapitulate:  (R/functions-2.Rmd)[functions-2.Rmd]
-
+ - Functions in packages in R: (R/packages-search.Rmd)[packages-search.Rmd]
+ - The three parts of every (non-`.Primitive`) function: ....
+ - Lexical Scoping - `environment` (R/envexample1.R)[envexample1.R]
+ - `environment`s : Look at Wickham's chapter [https:adv-r.had.co.nz/Environments.html]
 
 ---
 [Martin Maechler](https://stat.ethz.ch/~maechler), [ETH Zurich](https://www.ethz.ch.)
