@@ -7,11 +7,11 @@
    Knuth's "noweb".
    What happens in R Studio when klicking "Knit": Knitr (/ Sweave) and
    Pandoc; Graphically, Kieran
-   Healy (see [https://kieranhealy.org/resources/])'s visualization:
-   [https://polybox.ethz.ch/index.php/s/7vlx3zTAAqkoGyX](Rmarkdown Diagram).
+   Healy (see (https://kieranhealy.org/resources/))'s visualization:
+   (https://polybox.ethz.ch/index.php/s/7vlx3zTAAqkoGyX)[Rmarkdown Diagram].
 
- - [https://cran.r-project.org/doc/FAQ/R-FAQ.html](R FAQ) Question 7.31;
- 	(R10x0.1-num.Rmd)[R/10x0.1-num.Rmd]
+ - (https://cran.r-project.org/doc/FAQ/R-FAQ.html])[R FAQ] Question 7.31;
+ 	(R/10x0.1-num.Rmd)[R/10x0.1-num.Rmd]
 
 
    In R,
@@ -24,21 +24,21 @@
  - Hadley Wickham's  Advanced R: [https://adv-r.had.co.nz]
  - "Quiz" of Chapter 1 "Data Structures" --> `attributes`, atomic vectors,
    general vectors -- including `list()`s
- - Everything .. a function call, more:	(functions-1.R)[R/functions-1.R],
+ - Everything .. a function call, more:	(R/functions-1.R)[R/functions-1.R],
    notably help pages  `?c` (Details: output type via "hierarchy"), and `?[`
  - Generic functions `c()`, `[`, ...  `methods(<fun>)` to see them all.
- - Everything .. an object, more: (type-mode-class.Rmd)[R/type-mode-class.Rmd],
+ - Everything .. an object, more: (R/type-mode-class.Rmd)[R/type-mode-class.Rmd],
    shows `typeof()`, `class()`, `mode()` of atomic and more, including
    "language objects"
 
 
 ### Week 3
 
- - Recapitulate:  (functions-2.Rmd)[R/functions-2.Rmd]
- - Functions in packages in R: (packages-search.Rmd)[R/packages-search.Rmd]
+ - Recapitulate:  (R/functions-2.Rmd)[R/functions-2.Rmd]
+ - Functions in packages in R: (R/packages-search.Rmd)[R/packages-search.Rmd]
  - The three parts of every (non-`.Primitive`) function: ....
- - Lexical Scoping - `environment` (envexample1.R)[R/envexample1.R]
- - `environment`s : Look at Wickham's chapter [https://adv-r.had.co.nz/Environments.html]
+ - Lexical Scoping - `environment` (R/envexample1.R)[R/envexample1.R]
+ - `environment`s : Look at Wickham's chapter [https://adv-r.had.co.nz/Environments.html](8. Environments)
 
 ---
 [Martin Maechler](https://stat.ethz.ch/~maechler), [ETH Zurich](https://www.ethz.ch.)
