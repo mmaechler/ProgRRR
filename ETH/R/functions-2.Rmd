@@ -29,9 +29,18 @@ get("names<-") # here equivalent to the line above, using   ` ... `
 identical(`names<-`, get("names<-"))
 ```
 
->>> Excursion: Look at the functions in `base` etc: Open  `packages.Rnw`
+>>> Excursion: Look at the functions in `base` etc:
+```
+search()
+?search
+?ls
+ls()
+ls(2)  ## (and mention the Rstudio GUI to it)
+```
 
+>>> Open  (`packages.Rnw` or rather its small excerpt) `packages-search.Rmd`
 
+Now, we know this:
 We can define quite funny functions ourself ..
 ```{r}
 `[<-`  <- function(){}
