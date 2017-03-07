@@ -38,7 +38,7 @@
  - Functions in packages in R: (packages-search.Rmd)[R/packages-search.Rmd]
  - The three parts of every (non-`.Primitive`) function: ....
  - Lexical Scoping - `environment` (envexample1.R)[R/envexample1.R]
- - `environment`s : Look at Wickham's chapter [https:adv-r.had.co.nz/Environments.html]
+ - `environment`s : Look at Wickham's chapter [https://adv-r.had.co.nz/Environments.html]
 
 ---
 [Martin Maechler](https://stat.ethz.ch/~maechler), [ETH Zurich](https://www.ethz.ch.)
