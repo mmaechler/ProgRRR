@@ -32,7 +32,9 @@ The discussion of functional programming continues in the following two chapters
 
 ##### Prequisites
 
-You should be familiar with the basic rules of lexical scoping, as described in [lexical scoping](#lexical-scoping). Make sure you've installed the pryr package with `install.packages("pryr")`
+You should be familiar with the basic rules of lexical scoping, as described in [lexical scoping](#lexical-scoping).  
+MM: Not really needed in the ETH lecture:  
+Make sure you've installed the pryr package with `install.packages("pryr")`
 
 ## Motivation {#fp-motivation}
 
