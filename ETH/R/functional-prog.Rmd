@@ -447,11 +447,11 @@ counter3() # behaves like the others ..
 ## But what if we change its environment [CARE! can be "dangerous"]:
 environment(counter3) <- globalenv()
 ## what will you get now?
-cunter3()
+counter3()
 
 i <- 10
-cunter3()
-cunter3()
+counter3()
+counter3()
 i
 ```
 

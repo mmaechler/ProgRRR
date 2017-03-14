@@ -55,7 +55,7 @@
     globalenv(), emptyenv()`,
 	and the first two figures in *How R Searches and Finds Stuff*
 
-### Homework: Study the `one_counter()` example of
+### Homework: Study the `new_counter` and `counter_one()` example of
 	[functional-prog.Rmd](R/functional-prog.Rmd); then ask questions in class.
 
 
