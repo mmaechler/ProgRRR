@@ -443,13 +443,13 @@ ls.str(environment(counter_one))
 counter_two()
 
 ## [Progr R^3:]
-counter3() # behaves like the others ..
-## But what if we change its environment [CARE! can be "dangerous"]:
+counter3() # behaves like the others ..  __but__ what if
+## we change its environment [CARE! can be "dangerous" in other case] ?
 environment(counter3) <- globalenv()
 ## what will you get now?
 counter3()
 
-i <- 10
+i <- 10 # "fixing problem"..
 counter3()
 counter3()
 i
