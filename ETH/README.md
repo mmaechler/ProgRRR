@@ -1,5 +1,5 @@
 <!-- new in Feb.2017; working from previous
-  ../../Progr_w_R/2016-webpage/index.md -->
+  ~/Vorl/R/Progr_w_R/2016-webpage/index.md -->
 # Programming with *R* for *R*eproducible *R*esearch
 
 ## Table of Contents
@@ -58,6 +58,39 @@
 ### Homework: Study the `new_counter` and `counter_one()` example of
 	[functional-prog.Rmd](R/functional-prog.Rmd); then ask questions in class.
 
+### Week 5
+
+   - The `counter_one()` example (homework above): Q ?
+
+   - **"R is slow"** etc:
+     "***Premature optimization is the root of all evil***", [Donald
+    Knuth](http://en.wikiquote.org/wiki/Donald_Knuth)\
+
+   - Rather: Test, test, and test again; using `all.equal(target, current,
+    tolerance \~= 10\^-8)`
+   - NB: Good R packages contain a sub directory (sub folder) `./tests/` !!
+   - typical issue about [for()
+    loop](http://stackoverflow.com/questions/2908822/speed-up-the-loop-operation-in-r)
+    from Stackoverflow.
+
+   - functions `system.time()` and `proc.time()`
+    -- User Q about ['matrix vs.
+    data.frame'](http://comments.gmane.org/gmane.comp.lang.r.general/307149)
+    on the R-help mailing list (March 2014). -- a first look at Bill
+    Dunlap's solution + more, as [Rmd script](matrix_df_timing.Rmd).\
+   - [Our (modified) "Performance.Rmd"](R/Performance.Rmd) from
+    [Hadley Wickham's book chapter
+    "Performance"](http://adv-r.had.co.nz/Performance.html).
+   - Package `microbenchmark`: nice, (but partly doubtful says R core guru Luke Tierney)
+
+
+### Week 6
+
+  - continuing the topic 'Performance'
+
+  - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
+
+  - ...
 
 --------------
 
