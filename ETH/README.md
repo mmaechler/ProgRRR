@@ -66,6 +66,7 @@
  - Rather: Test, test, and test again; using `all.equal(target, current,
   tolerance = 10^-8)`
  - NB: Good R packages contain a sub directory (sub folder) `./tests/` !!
+   (Examples: `sfsmisc`, `copula`, `lme4`, ..., **all** standard R packages)
  - typical issue about [for()
   loop](http://stackoverflow.com/questions/2908822/speed-up-the-loop-operation-in-r)
   from Stackoverflow.
