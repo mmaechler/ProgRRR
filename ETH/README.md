@@ -72,8 +72,7 @@
   from Stackoverflow.
 
  - functions `system.time()` and `proc.time()`
-  -- User Q about ['matrix vs.
-  data.frame'](http://comments.gmane.org/gmane.comp.lang.r.general/307149)
+  -- User Q about ['matrix vs. data.frame'](https://stat.ethz.ch/pipermail/r-help/2014-March/372321.html)
   on the R-help mailing list (March 2014). -- a first look at Bill
   Dunlap's solution + more, as Rmd script [matrix_df_timing.Rmd](R/matrix_df_timing.Rmd).
  - [Our (modified) "Performance.Rmd"](R/Performance.Rmd) from
