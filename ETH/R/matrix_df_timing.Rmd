@@ -6,9 +6,8 @@ author: William Dunlap and Martin Maechler
 
 Started from an E-mail
 
-William Dunlap | R-help mailing list | 17 Mar 00:36 2014 | Subject: Re: **data frame vs. matrix**
-[http://permalink.gmane.org/gmane.comp.lang.r.general/307163](Gmane "mirror"
-of R-help archive)
+William Dunlap | R-help mailing list | 17 Mar 2014 | Subject: Re: **data frame vs. matrix**
+[https://stat.ethz.ch/pipermail/r-help/2014-March/372323.html](R-help: 4th message of thread)
 
 MM, 2016: From the timings below, note how **much faster** R is two years later!
 
@@ -32,7 +31,7 @@ dumkoll <- function(n = 1000, df = TRUE){
         if (identical(df, "quicker")) {
                 x <- dfr$x
                 for(i in 2:length(x)) {
-                        x[i] <- x[i-1]
+[                        x[i] <- x[i-1]
                 }
                 dfr$x <- x
         } else if (df){
