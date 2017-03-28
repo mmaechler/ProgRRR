@@ -83,11 +83,17 @@
 
 ### Week 6
 
- - continuing the topic 'Performance'
+
+### More about profiling:
+ - Hadley's "Profiling"](http://adv-r.had.co.nz/Profiling.html)
+ - Luke Tierney's `proftools` package:
+    [Explore `proftools` vignette](R/proftools-ex.R).
 
  - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
 
- - ...
+ - continuing the topic 'Performance' (our `Performance.md`,  above)
+
+
 
 --------------
 
