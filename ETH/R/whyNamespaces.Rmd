@@ -1,15 +1,16 @@
 ---
 title: "Namespaces - why"
 author: "Martin Maechler"
-date: "September 2015; update Oct 2016""
+date: "September 2015; update Oct 2016"
 output: ioslides_presentation
 ---
 
 ## Why do we need  **namespaces** in R ?
 
-_Note_: The source is in MM's `r current_input(dir=TRUE)`
-
 Short answer: __To prevent name conflicts and to allow modular programming in packages__
+
+_Note_: The source of this presentation is MM's `whyNamespaces.Rmd`
+
 
 Example from Luke Tierney (2003)'s  introductory article on namespaces
 
