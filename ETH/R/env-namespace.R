@@ -18,7 +18,6 @@ identical(L2, intersect(L1, L2)) # TRUE
 setdiff(L2, L1) ## empty
 setdiff(L1, L2) ## 600 something objects, e.g., coef.default
 
-
 identical(asNamespace("stats"), nm.stats) # TRUE
 (pkg.stats <- as.environment("package:stats"))
 parent.env(pkg.stats) ## -> the next in the search path
