@@ -22,6 +22,8 @@ identical(asNamespace("stats"), nm.stats) # TRUE
 (pkg.stats <- as.environment("package:stats"))
 parent.env(pkg.stats) ## -> the next in the search path
 
+parent.env(nm.stats)  ## -> the __imports__ of stats
+
 coef # S3 generic function
 methods("coef") # 5 methods -- all with "*" : "hidden"
 getAnywhere("coef.default")
