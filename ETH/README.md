@@ -110,7 +110,7 @@
  - Finish `env-namespace.R` (week 6)
 
 #### Short outlook into  __Regular Expressions__
- - All good languages have them (R, perl, python, emacs-lisp, ....):
+ - All good languages have them (R, perl, python, PHP, java, emacs-lisp, ...):
     http://www.regular-expressions.info/rlanguage.html
  - Help pages for `grep` and `regexp`.
 
