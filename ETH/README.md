@@ -93,9 +93,31 @@
 
  - continuing the topic 'Performance' (our `Performance.md`,  above)
 
+ - Looking at R packages, source and "binary"; at first
+
+   packages and namespaces: [env-namespace.R](R/env-namespace.R)
+
+
+### Week 7
+
+#### Packages and namespaces: repeat and cleanup / Q & A
+
+ - Packages and their Namespaces: Why are namespaces needed: Rmd
+    [whyNamespaces.Rmd](R/whyNamespaces.Rmd) and
+	[its html](R/whyNamespaces.html).
+ - The one slide about packages in search()[the "one" slide](R/packages-search.Rmd)
+ - What does `library() / require()` do? [require-pkg-namespace.Rmd](R/require-pkg-namespace.Rmd)
+ - Finish `env-namespace.R` (week 6)
+
+#### Short outlook into  __Regular Expressions__
+ - All good languages have them (R, perl, python, emacs-lisp, ....):
+    http://www.regular-expressions.info/rlanguage.html
+ - Help pages for `grep` and `regexp`.
 
 
 --------------
+
+
 
 ## Miscellaneous Information
 
