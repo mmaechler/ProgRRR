@@ -104,21 +104,29 @@ abs(x1 - x2) <= 1e-10 * abs((x1 + x2)/2)
 ```
 and you may note that `<=` is important and not the same as `<`.
 
+4. The (in principle platform dependent, today mostly the same (64-bit arch)
+   Maschine constants in R -- also contain the "computer epsilon"
+   $\epsilon_C := \max_\epsilon 1+\epsilon = 1$  where "$+$" and "$=$"
+   really computer arithmetic operations, not mathematical ones.
+```{r}
+str(.Machine) # str() using itself only 3 (significant) digits:
+```
+   
 ---
 
 ### After thought:
 ```{r}
-ii <- 1:20
-cbind(ii, "1/n + 2/n - 3/n" = sapply(1:20, function(n) 1/n + 2/n - 3/n))
+ni <- 1:20
+cbind(n = ni, "1/n + 2/n - 3/n" = sapply(ni, function(n) 1/n + 2/n - 3/n))
 ##... R get's it right more often than not ..
 n <- 500 # or 1500, 5000 ..
-ii <- 1:n ; not.eq <- sapply(ii, function(n) (1/n + 2/n - 3/n) != 0)
-ii[not.eq] ## hmm... do we see a pattern ?
+ni <- 1:n ; not.eq <- sapply(ni, function(n) (1/n + 2/n - 3/n) != 0)
+ni[not.eq] ## hmm... do we see a pattern ?
 
-plot(ii[not.eq])
+plot(ni[not.eq])
 grid()
-plot(diff(ii[not.eq]))
-plot(diff(ii[not.eq]), type = "o")
-acf (diff(ii[not.eq])) # .. weak pattern .. not clear
-acf (sqrt(diff(ii[not.eq]) - 1)) # .. not clear
+plot(diff(ni[not.eq]))
+plot(diff(ni[not.eq]), type = "o")
+acf (diff(ni[not.eq])) # .. weak pattern .. not clear
+acf (sqrt(diff(ni[not.eq]) - 1)) # .. not clear
 ```
