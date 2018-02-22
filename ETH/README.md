@@ -19,7 +19,7 @@
    everything that **exists** is an object;
    everything that **happens** is a function call
 
- - Is that true?  Which function is called in `x <- 3` ? [R/functions-1.R](functions-1.R)
+ - Is that true?  Which function is called in `x <- 3` ? [R/functions-1.R](R/functions-1.R)
 
 ### Week 2 -- Objects, Function Calls, "Functions everywhere"
  - Hadley Wickham's  Advanced R: [https://adv-r.had.co.nz]
@@ -30,14 +30,14 @@
    to "convenient" type; further, see help on `[`, etc.
  - Generic functions `c()`, `[`, ...  `methods(<fun>)` to see them all.
  - Replacement functions: `dim<-`, `names<-`, `[<-`
- - _Everything that exists is an object_ (more): [R/type-mode-class.Rmd](type-mode-class.Rmd),
+ - _Everything that exists is an object_ (more): [R/type-mode-class.Rmd](R/type-mode-class.Rmd),
     shows `typeof()`, `class()`, `mode()` of atomic vectors and more, including "language objects".
 
 
 ### Week 3 -- Functions, their Environments, `search()` path, ...
 
  - Recapitulate:  [R/functions-2.Rmd](R/functions-2.Rmd)
- - Functions in packages in R: [R/packages-search.Rmd](packages-search.Rmd)
+ - Functions in packages in R: [R/packages-search.Rmd](R/packages-search.Rmd)
  - The three parts of every (non-`.Primitive`) function: ....
  - Lexical Scoping - `environment` [R/envexample1.R](R/envexample1.R)
  - `environment`s : Beginnig of H.Wickham's chapter [8. Environments](https://adv-r.had.co.nz/Environments.html)
