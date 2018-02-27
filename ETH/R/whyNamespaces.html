@@ -99,9 +99,9 @@
 
 <slide class=''><hgroup><h2>Why do we need <strong>namespaces</strong> in R ?</h2></hgroup><article  id="why-do-we-need-namespaces-in-r">
 
-<p><em>Note</em>: The source is in MM&#39;s <code>whyNamespaces.Rmd</code></p>
-
 <p>Short answer: <strong>To prevent name conflicts and to allow modular programming in packages</strong></p>
+
+<p><em>Note</em>: The source of this presentation is MM&#39;s <code>whyNamespaces.Rmd</code></p>
 
 <p>Example from Luke Tierney (2003)&#39;s introductory article on namespaces</p>
 
@@ -269,51 +269,57 @@ mydnorm(-2:2)</pre>
 
 <pre class = 'prettyprint lang-r'>sessionInfo() ## note the  &quot; loaded via namespace (and not attached) &quot;</pre>
 
-<pre >## R version 3.3.3 (2017-03-06)
+<pre >## R Under development (unstable) (2017-10-10 r73517)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Fedora 24 (Twenty Four)
+## Running under: Fedora 26 (Twenty Six)
+## 
+## Matrix products: default
+## BLAS: /scratch/users/maechler/R/D/r-devel/inst-shlib/lib/libRblas.so
+## LAPACK: /scratch/users/maechler/R/D/r-devel/inst-shlib/lib/libRlapack.so
 ## 
 ## attached base packages:
 ## [1] graphics  grDevices datasets  stats     utils     methods   base     
 ## 
 ## other attached packages:
-## [1] dplyr_0.5.0     Hmisc_4.0-2     ggplot2_2.2.1   Formula_1.2-1  
-## [5] survival_2.41-2 lattice_0.20-35 sfsmisc_1.1-1  
+## [1] dplyr_0.7.4     Hmisc_4.0-3     ggplot2_2.2.1   Formula_1.2-2  
+## [5] survival_2.41-3 lattice_0.20-35 sfsmisc_1.1-1  
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.10        RColorBrewer_1.1-2  plyr_1.8.4         
-##  [4] base64enc_0.1-3     tools_3.3.3         rpart_4.1-10       
-##  [7] digest_0.6.12       evaluate_0.10       tibble_1.3.0       
-## [10] gtable_0.2.0        htmlTable_1.9       checkmate_1.8.2    
-## [13] Matrix_1.2-9        DBI_0.6-1           yaml_2.1.14        
-## [16] gridExtra_2.2.1     stringr_1.2.0       knitr_1.15.1       
-## [19] cluster_2.0.6       htmlwidgets_0.8     rprojroot_1.2      
-## [22] grid_3.3.3          nnet_7.3-12         data.table_1.10.4  
-## [25] R6_2.2.0            foreign_0.8-67      rmarkdown_1.4      
-## [28] latticeExtra_0.6-28 magrittr_1.5        backports_1.0.5    
-## [31] scales_0.4.1        htmltools_0.3.5     splines_3.3.3      
-## [34] assertthat_0.1      colorspace_1.3-2    stringi_1.1.3      
-## [37] acepack_1.4.1       lazyeval_0.2.0      munsell_0.4.3</pre>
+##  [1] Rcpp_0.12.13        bindr_0.1           compiler_3.5.0     
+##  [4] RColorBrewer_1.1-2  plyr_1.8.4          base64enc_0.1-3    
+##  [7] tools_3.5.0         rpart_4.1-11        digest_0.6.12      
+## [10] evaluate_0.10       tibble_1.3.4        gtable_0.2.0       
+## [13] htmlTable_1.9       checkmate_1.8.4     pkgconfig_2.0.1    
+## [16] rlang_0.1.2.9000    Matrix_1.2-12       yaml_2.1.14        
+## [19] bindrcpp_0.2        gridExtra_2.3       stringr_1.2.0      
+## [22] knitr_1.17          cluster_2.0.6       htmlwidgets_0.9    
+## [25] rprojroot_1.2       grid_3.5.0          nnet_7.3-12        
+## [28] glue_1.1.1          data.table_1.10.4-2 R6_2.2.2           
+## [31] foreign_0.8-69      rmarkdown_1.6       latticeExtra_0.6-28
+## [34] magrittr_1.5        backports_1.1.1     scales_0.5.0       
+## [37] htmltools_0.3.6     splines_3.5.0       assertthat_0.2.0   
+## [40] colorspace_1.3-2    stringi_1.1.5       acepack_1.4.1      
+## [43] lazyeval_0.2.0      munsell_0.4.3</pre>
 
 </article></slide><slide class=''><hgroup><h2>loaded &#8230; (and not attached)</h2></hgroup><article  id="loaded-...-and-not-attached">
 
 <p><code>sessionInfo()</code> <!-- the following needs package `sfsmisc`, R-forge version >= 2015-09-05: --></p>
 
-<pre >## R version 3.3.3 (2017-03-06)
+<pre >## R Under development (unstable) (2017-10-10 r73517)
 ##  ....... 
 ##  ....... 
-##  [4] base64enc_0.1-3     tools_3.3.3         rpart_4.1-10       
-##  [7] digest_0.6.12       evaluate_0.10       tibble_1.3.0       
-## [10] gtable_0.2.0        htmlTable_1.9       checkmate_1.8.2    
-## [13] Matrix_1.2-9        DBI_0.6-1           yaml_2.1.14        
-## [16] gridExtra_2.2.1     stringr_1.2.0       knitr_1.15.1       
-## [19] cluster_2.0.6       htmlwidgets_0.8     rprojroot_1.2      
-## [22] grid_3.3.3          nnet_7.3-12         data.table_1.10.4  
-## [25] R6_2.2.0            foreign_0.8-67      rmarkdown_1.4      
-## [28] latticeExtra_0.6-28 magrittr_1.5        backports_1.0.5    
-## [31] scales_0.4.1        htmltools_0.3.5     splines_3.3.3      
-## [34] assertthat_0.1      colorspace_1.3-2    stringi_1.1.3      
-## [37] acepack_1.4.1       lazyeval_0.2.0      munsell_0.4.3</pre></article></slide>
+## [10] evaluate_0.10       tibble_1.3.4        gtable_0.2.0       
+## [13] htmlTable_1.9       checkmate_1.8.4     pkgconfig_2.0.1    
+## [16] rlang_0.1.2.9000    Matrix_1.2-12       yaml_2.1.14        
+## [19] bindrcpp_0.2        gridExtra_2.3       stringr_1.2.0      
+## [22] knitr_1.17          cluster_2.0.6       htmlwidgets_0.9    
+## [25] rprojroot_1.2       grid_3.5.0          nnet_7.3-12        
+## [28] glue_1.1.1          data.table_1.10.4-2 R6_2.2.2           
+## [31] foreign_0.8-69      rmarkdown_1.6       latticeExtra_0.6-28
+## [34] magrittr_1.5        backports_1.1.1     scales_0.5.0       
+## [37] htmltools_0.3.6     splines_3.5.0       assertthat_0.2.0   
+## [40] colorspace_1.3-2    stringi_1.1.5       acepack_1.4.1      
+## [43] lazyeval_0.2.0      munsell_0.4.3</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
@@ -325,7 +331,7 @@ mydnorm(-2:2)</pre>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
