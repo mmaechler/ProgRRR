@@ -110,6 +110,9 @@ and you may note that `<=` is important and not the same as `<`.
    really computer arithmetic operations, not mathematical ones.
 ```{r}
 str(.Machine) # str() using itself only 3 (significant) digits:
+2^-52   # double.eps : the computer epsilon
+2^-1022 # double.xmin
+2^1023.9999
 ```
    
 ---
