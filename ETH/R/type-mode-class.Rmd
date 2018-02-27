@@ -1,7 +1,7 @@
 ---
 title: Language Objects in R
 author: Martin Maechler
-date: "Aug. 28, 2015  (last change: `r Sys.Date()`)" # format(Sys.time(), "%H:%M:%OS3")
+date: "Aug. 28, 2015  (last change: Feb.27, 2018; rendered at `r Sys.Date()`)" # format(Sys.time(), "%H:%M:%OS3")
 output:
   html_document:
     highlight: tango
@@ -31,6 +31,7 @@ c2 <- cc[[2]]; c2
 
 typeof(c1)
    str(c2)
+class(c1)
 ```
 
 # Get to the substance - R functions of object inspection
@@ -53,9 +54,10 @@ to see how these R objects, are categorized by the different "inspection" functi
 ```{r l.ex}
 l.ex <- list(one = 1, s1 = 1:2, pi = pi, I = 1i, `NA` = NA, let = c("A", "a", "b", ":::"),
              fn = mean, fn2 = c, fnSpec = `function`,
-             n = as.name("Mä"), n2 = quote(x), ex = expression(1+1),
-             cl = call("round",10), cl2 = quote(sin(x)), formula = y ~ x+t, 
-			 formals = formals(lm), arg1 = formals(lm)[[1]], NULL = NULL)
+             n = as.name("Mä"), n2 = quote(x), nb = quote(`{`),
+             ex = expression(1+1), cl = call("round",10), cl2 = quote(sin(x)),
+             formula = y ~ x+t, formals = formals(lm), arg1 = formals(lm)[[1]],
+             NULL = NULL)
 str(l.ex, vec.len = 16, max.level = 1)
 ```
 
@@ -85,4 +87,12 @@ knitr::kable(tab.ex, format="pandoc")
 ```{r session-info}
 print(sessionInfo(), locale=FALSE)
 ```
+
+<!-- Note the default of the  `backtick` argument of function `deparse()`.
+ It currenly is `mode(expr) %in% c("call", "expression", "(", "function")`.
+ I had tried to change this (and add "name" to the strings) in Sep.2017,
+ but that broke a couple of (not unimportant) CRAN packages.
+I found that this unfortunately meant the `symbol`s (aka `name`s) would not be correctly deparsed by default.  E.g., the above `nb` would not by default use `backtick = TRUE` but that would have been quite desirable.
+ -->
+
 _Note_: The source of this document is MM's `r knitr::current_input(dir=TRUE)`
