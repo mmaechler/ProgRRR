@@ -10,7 +10,7 @@ Consequently, we want to
 1. understand R objects
 2. see *what* functions are called when _"we type simple things"_
 
-**Replacement functions :**
+## **Replacement functions :**
 
 ```{r}
 v <- 1:5
@@ -19,6 +19,7 @@ v
 v <- 1:5
 names(v) <- c("Hans", "Heiri")
 v
+names(v) # did construct character NA's
 ```
 
 Hmm, ...,  what functions where called in the above lines?
@@ -29,8 +30,8 @@ get("names<-") # here equivalent to the line above, using   ` ... `
 identical(`names<-`, get("names<-"))
 ```
 
->>> Excursion: Look at the functions in `base` etc:
-```
+### Excursion: Look at the functions in `base` etc:
+```{r}
 search()
 ?search
 ?ls
@@ -39,6 +40,8 @@ ls(2)  ## (and mention the Rstudio GUI to it)
 ```
 
 >>> Open  (`packages.Rnw` or rather its small excerpt) `packages-search.Rmd`
+
+## Replacement functions -2-  `someT<-`
 
 Now, we know this:
 We can define quite funny functions ourself ..
@@ -57,6 +60,8 @@ we broke  R .... well, *our* R session only.
 How to fix?
 
 
+
+
 ```{r}
 rm("[<-")
 x[1] <- 10 ; x ## aaahh... life is well again
@@ -66,7 +71,7 @@ x[1] <- 10 ; x ## aaahh... life is well again
 methods("[<-")
 ```
 
-**Note**
+## **Note**: The three parts of all (regular) R functions:
 
 An R function is made of three parts
 1. `formals()`    : The argument list
@@ -93,7 +98,7 @@ deff
 class(deff)
 ```
 
-** `missing()` allows to check if an argument has been specified  in the actual call: **
+### `missing()` allows to check if an argument has been specified  in the actual call:
 ```{r}
 tt  <- function(x, ab=TRUE) {
         cat("missing(x):", missing(x),
@@ -105,7 +110,7 @@ tt(1, TRUE)
 tt() ## the formals arguments of tt()
 ```
 
-** Formal (and "actual") Arguments **
+### Formal (and "actual") Arguments
 
 ```{r}
 sin     # formal argument  'x'
@@ -118,7 +123,7 @@ Beware of  "Lazy Evaluation" (replacement only happens as needed)
 
 sin is  *Primitive* function -- these are made to be very fast in R
 by ``diving into C-level'' of R immediately.
-==> They are the exeptions: all three parts are empty
+==> The primitive functions are **the exceptions**: all three parts are empty
 ```{r}
 formals(sin) ## NULL, ditto for the body
 body   (sin)
