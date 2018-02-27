@@ -22,7 +22,7 @@
  - Is that true?  Which function is called in `x <- 3` ? [R/functions-1.R](R/functions-1.R)
 
 ### Week 2 -- Objects, Function Calls, "Functions everywhere"
- - Hadley Wickham's  Advanced R: [https://adv-r.had.co.nz]
+ - Hadley Wickham's  Advanced R: [http://adv-r.had.co.nz]
  - "Quiz" of Chapter 1 "Data Structures" --> `attributes`, atomic vectors,
    general vectors -- including `list()`s
  - _Everything that happens is a function call_ (more):	[R/functions-1.R](R/functions-1.R),
@@ -40,7 +40,7 @@
  - Functions in packages in R: [R/packages-search.Rmd](R/packages-search.Rmd)
  - The three parts of every (non-`.Primitive`) function: ....
  - Lexical Scoping - `environment` [R/envexample1.R](R/envexample1.R)
- - `environment`s : Beginnig of H.Wickham's chapter [8. Environments](https://adv-r.had.co.nz/Environments.html)
+ - `environment`s : Beginnig of H.Wickham's chapter [8. Environments](http://adv-r.had.co.nz/Environments.html)
 
 ### Week 4
 
@@ -49,7 +49,7 @@
     [H.Wickham's functional programming](http://adv-r.had.co.nz/Functional-programming.html) chapter.
  -  [The initial R session ("Play time ...")](R/How_R_Searches--env1.R),
 	somewhat extended, of ***How R Searches and Finds Stuff***
- - We look again at H.Wickham's [8. Environments](https://adv-r.had.co.nz/Environments.html)
+ - We look again at H.Wickham's [8. Environments](http://adv-r.had.co.nz/Environments.html)
  - Functions --> environments:
  - `ls(), get(), assign(), find(), ls.str(), new.env(), parent.env(), globalenv(), emptyenv()`,
 	and the first two figures in *How R Searches and Finds Stuff*
