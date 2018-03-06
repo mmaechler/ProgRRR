@@ -26,7 +26,8 @@ f <- function(y) {
 
    print(environment(h))
    cat("environment(h):              "); print(ls(environment(h)))
-   cat("inside f - the same as '(h)':"); print(ls(environment()))
+    cat("inside f - the same as '(h)':"); print(ls(environment()))
+    cat("the same? ", identical(environment(h), environment()), "\n")
    cat("environment(f) [=globalenv]: "); print(ls(environment(f))) # = Globalenv
 
    h()
@@ -38,7 +39,7 @@ rm(w)
 ## Sometimes we think we rather "want"  **dynamic scoping**
 ## but R uses  "only" syntactic scoping :
 g <- function(a) {
-        w <- 10
+        w <- 9
         f(a)
 }
 
