@@ -83,7 +83,7 @@ str(abline) # the function "header" *printed*
 args(abline)  # the "[arg]ument[s]" (but ..)
 str(args(abline)) # {as empty function}
 f <- abline
-body(f) <- NULL
+body(f) <- NULL  ## what function?
 f
 
 ## The "real" argument list as R object:
@@ -93,9 +93,12 @@ str ( formals(abline) ) # "Dotted pair list"
 ?formals ##  there is a replacement function
 def.u  <- formals(abline)$untf
 def.u
+formals(formals)
+str( formals(formals) )
 deff <- formals(formals)[["fun"]]
 deff
-class(deff)
+class(deff)  # call
+typeof(deff) # language
 ```
 
 ### `missing()` allows to check if an argument has been specified  in the actual call:
@@ -106,7 +109,7 @@ tt  <- function(x, ab=TRUE) {
         formals()
 }
 tt(1)
-tt(1, TRUE)
+tt(1, FALSE)
 tt() ## the formals arguments of tt()
 ```
 
@@ -128,4 +131,5 @@ by ``diving into C-level'' of R immediately.
 formals(sin) ## NULL, ditto for the body
 body   (sin)
 environment(sin)
+is.primitive(sin)
 ```
