@@ -28,4 +28,6 @@ s()
 ## 3) "fix the bug"
 ## 4) "send to console" (evaluate in globalenv)
 ## 5) This is not sufficient
+
+## but rather you must additionally get it to have the correct "enclosing environment"
 environment(<thisFun>) <- asNamespace("pkgName")
