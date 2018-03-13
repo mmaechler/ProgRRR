@@ -1,6 +1,6 @@
 <!-- new in Feb.2017; working from previous
   ~/Vorl/R/Progr_w_R/2016-webpage/index.md -->
-# Programming with *R* for *R*eproducible *R*esearch --- "Prog R^3"
+# Programming with *R* for *R*eproducible *R*esearch - 'Prog R^3'
 
 ## Table of Contents
 
