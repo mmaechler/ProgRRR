@@ -32,8 +32,8 @@ The discussion of functional programming continues in the following two chapters
 
 ##### Prequisites
 
-You should be familiar with the basic rules of lexical scoping, as described in [lexical scoping](#lexical-scoping).  
-MM: Not really needed in the ETH lecture:  
+You should be familiar with the basic rules of lexical scoping, as described in [lexical scoping](#lexical-scoping).
+MM: Not really needed in the ETH lecture:
 Make sure you've installed the pryr package with `install.packages("pryr")`
 
 ## Motivation {#fp-motivation}
@@ -104,6 +104,12 @@ fix_missing <- function(x) {
   x
 }
 df[] <- lapply(df, fix_missing)
+
+attributes(df)
+## what if we drop the  '[]' ?
+df.  <- lapply(df, fix_missing)
+df.. <- as.data.frame(df.)
+identical(df.., df) # TRUE
 ```
 
 This code has five advantages over copy and paste:
@@ -145,7 +151,7 @@ fix_missing_9999 <- function(x) {
 
 As before, it's easy to create bugs. Instead we could use closures, functions that make and return functions. Closures allow us to make functions based on a template:
 
-```{r}
+```{r, missing_f}
 missing_fixer <- function(na_value) {
   function(x) {
     x[x == na_value] <- NA
@@ -169,9 +175,14 @@ env$na_value
 ##
 fix_miss_45  <- fix_missing_99
 environment(fix_miss_45) <- new.env() # silly
-fix_miss_45(1:10) # error
+try(
+   fix_miss_45(1:10)
+   )# --> error
 fix_miss_45  <- fix_missing_99
 assign("na_value", -45,  envir = environment(fix_miss_45))
+## or more compactly :
+environment(fix_miss_45)$na_value <- -45
+
 fix_miss_45(1:10)
 
 fix_miss_45(c(NA,1:4,NA, 8:10))
@@ -202,7 +213,7 @@ mean(df$b)
 median(df$b)
 sd(df$b)
 mad(df$b)
-IQR(df$b)
+IQR(df$b) # Error
 ```
 
 But again, you'd be better off identifying and removing duplicate items. Take a minute or two to think about how you might tackle this problem before reading on.
@@ -420,7 +431,7 @@ Having variables at two levels allows you to maintain state across function invo
 
 Together, a static parent environment and `<<-` make it possible to maintain state across function calls.  The following example shows a counter that records how many times a function has been called. Each time `new_counter` is run, it creates an environment, initialises the counter `i` in this environment, and then creates a new function.
 
-```{r}
+```{r, new_cnt}
 new_counter <- function() {
   i <- 0
   function() {
@@ -446,8 +457,9 @@ counter_two()
 counter3() # behaves like the others ..  __but__ what if
 ## we change its environment [CARE! can be "dangerous" in other case] ?
 environment(counter3) <- globalenv()
-## what will you get now?
+try( ## what will you get now?
 counter3()
+)
 
 i <- 10 # "fixing problem"..
 counter3()
@@ -530,7 +542,7 @@ In R, functions can be stored in lists. This makes it easier to work with groups
 
 We'll start with a simple benchmarking example. Imagine you are comparing the performance of multiple ways of computing the arithmetic mean. You could do this by storing each approach (function) in a list:
 
-```{r}
+```{r, c_mean}
 compute_mean <- list(
   base = function(x) mean(x),
   sum = function(x) sum(x) / length(x),
