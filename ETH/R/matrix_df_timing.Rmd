@@ -103,8 +103,8 @@ TIBCO Software
 wdunlap tibco.co
 
 ```{r, Rprof}
-Rprof("dumkoll.Rprof") # start profiling
-dd <- dumkoll(10000, df=TRUE)
+Rprof("dumkoll.Rprof", interval = 0.005) # start profiling
+dd <- dumkoll(50000, df=TRUE)
 Rprof(NULL) # stop profiling
 ## ?Rprof
 sr <- summaryRprof("dumkoll.Rprof")
