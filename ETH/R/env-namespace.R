@@ -75,4 +75,11 @@ str(ap1, give.attr=FALSE)
 ## now we know that already:
 ap1[[length(ap1) - 2]] ## the 'Autoloads'
 
+### ------------ 2018  Smart student question : ------------
 
+## Q:  Can we put an "own" environment into the search() path ?
+## A:  Yes, and that can be important: The answer is
+attach
+## --  and there's a very nice (;-)  function
+sfsmisc :: sourceAttach
+## which takes  some.R   file, and source()s that into a new location in the search path
