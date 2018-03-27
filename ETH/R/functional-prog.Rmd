@@ -434,8 +434,8 @@ Together, a static parent environment and `<<-` make it possible to maintain sta
 ```{r, new_cnt}
 new_counter <- function() {
   i <- 0
-  function() {
-    i <<- i + 1
+  function(j = 1) { # argument 'j' is addition from ProgR^2 (2018)
+    i <<- i + j
     i
   }
 }
