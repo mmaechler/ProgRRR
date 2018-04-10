@@ -7,17 +7,24 @@ output: html_document
 
 ### What happens when you "get" a package: `library()` etc
 
-```
-require(<pkg>) \   1) load the namespace corresponding to 'pkg'  
-                \         -> *import* (*recursively*) everything needed  
-                /  2) attach "the package"  to the search() path.  
-library(<pkg>) /	            "the package" :=  The *export*ed objects  
+
+	require(<pkg>) \   1) load the namespace corresponding to 'pkg'
+					\         -> *import* (*recursively*) everything needed
+					/  2) attach "the package"  to the search() path.
+	library(<pkg>) /	            "the package" :=  The *export*ed objects
+
+
+```{r, library-does-1-and-2, eval=FALSE}
+library # a bit long (including "help"), but apart from that and error checking it does
+ ns <- loadNamespace(package, lib.loc)       # == 1)
+ env <- attachNamespace(ns, pos = pos, deps) # == 2)
 ```
 
 ### Every Package has two important "Meta data" files:
-* `DECRIPTION`: contains `Depends:`, `Imports:`, ...
+* `DESCRIPTION`: contains `Depends:`, `Imports:`, ...
 * `NAMESPACE`: has `imports()` and `exports()`
               (plus `S3methods()`, `exportClasses()`, ...)
+
 
 ### R functions related to this:
 * `loadNamespace()`
