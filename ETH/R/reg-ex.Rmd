@@ -14,10 +14,15 @@ grepl(pattern, string)
 ##  ^ logical  --> [1]  TRUE FALSE  TRUE
 ```
 
-## 2 _Locate_ patterns : Find starting position and first match:
+## 2 _Locate_ patterns : Find starting position
 ```{r, regexpr}
- regexpr(pattern, string)
-gregexpr(pattern, string)
+ regexpr(pattern, string) # and first match
+gregexpr(pattern, string) # and all   matches
+```
+use `substr(text, n1, n2)` to extract the substring from letter n1 to n2
+
+```{r, substr}
+substr(string, 13,15)
 ```
 
 ## 3 _Extract_ patterns
@@ -32,6 +37,9 @@ regmatches(string, gregexpr(pattern, string))
 replacement <- "_A_"
  sub(pattern, replacement, string)
 gsub(pattern, replacement, string)
+## more interesting : use the matched part {'\1' is the first parenthesized part : (*)}
+gsub("(t.m)", "{\\1}", string)
+gsub("(t.m)", "{\\U\\1}", string, perl=TRUE)
 ```
 
 ## 5 Split a string, using a pattern
