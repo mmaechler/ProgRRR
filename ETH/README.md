@@ -83,39 +83,45 @@
 
 ### Week 6
 
+ - continuing the topic 'Performance' (our `Performance.md`,  above)
 
-### More about profiling:
+#### More about profiling:
+
  - Hadley's "Profiling"](http://adv-r.had.co.nz/Profiling.html)
  - Luke Tierney's `proftools` package:
     [Explore `proftools` vignette](R/proftools-ex.R).
 
- - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
-
- - continuing the topic 'Performance' (our `Performance.md`,  above)
-
- - Looking at R packages, source and "binary"; at first
-
-   packages and namespaces: [env-namespace.R](R/env-namespace.R)
-
-
-### Week 7
-
-#### Packages and namespaces: repeat and cleanup / Q & A
+#### Packages and (their) Namespaces -- wrap up
 
  - Packages and their Namespaces: Why are namespaces needed: Rmd
     [whyNamespaces.Rmd](R/whyNamespaces.Rmd) and
 	[its html](R/whyNamespaces.html).
+
+ - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
+
+ - Packages and namespaces: [env-namespace.R](R/env-namespace.R)
+
+ - Looking at R packages, source and "binary"; at first
  - The one slide about packages in search()[the "one" slide](R/packages-search.Rmd)
+
+
+### Week 7
+
+#### Packages and namespaces: final / Q & A
+
  - What does `library() / require()` do? [require-pkg-namespace.Rmd](R/require-pkg-namespace.Rmd)
- - Finish `env-namespace.R` (week 6)
 
 #### Short outlook into  __Regular Expressions__
  - All good languages have them (R, perl, python, PHP, java, emacs-lisp, ...):
     http://www.regular-expressions.info/rlanguage.html
+
  - Help pages for `grep` and `regexp`.
 
+ - "Show off":  `regexplain` (github only) package:
+     https://github.com/gadenbuie/regexplain#readme
 
 --------------
+
 
 
 
@@ -152,7 +158,3 @@ in 2017 specifically on April 11 (same time, same place as lecture).
 [Martin Maechler](https://stat.ethz.ch/~maechler),
 [Seminar for Statistics](https://stat.ethz.ch/),
 [ETH Zurich](https://www.ethz.ch.)
-
-
-
-
