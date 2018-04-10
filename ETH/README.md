@@ -120,6 +120,9 @@
 
  - Help pages for `grep` and `regexp`.
 
+ - [Reg.Exp. Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
+   (RStudio contributed cheat sheets)
+
  - "Show off":  `regexplain` (github only) package:
      https://github.com/gadenbuie/regexplain#readme
 
