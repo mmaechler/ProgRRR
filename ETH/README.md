@@ -111,6 +111,9 @@
 
  - What does `library() / require()` do? [require-pkg-namespace.Rmd](R/require-pkg-namespace.Rmd)
 
+ - The ["2x2 kinds of R packages"](package-kinds.pdf)
+   (source -- binary; folder -- zipped)
+
 #### Short outlook into  __Regular Expressions__
  - All good languages have them (R, perl, python, PHP, java, emacs-lisp, ...):
     http://www.regular-expressions.info/rlanguage.html
