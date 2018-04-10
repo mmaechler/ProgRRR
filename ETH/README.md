@@ -123,8 +123,11 @@
  - [Reg.Exp. Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
    (RStudio contributed cheat sheets)
 
+<<<<<<< HEAD
    R code for that : [reg-ex.Rmd](R/reg-ex.Rmd)
 
+=======
+>>>>>>> refs/remotes/origin/master
  - "Show off":  `regexplain` (github only) package:
      https://github.com/gadenbuie/regexplain#readme
 
