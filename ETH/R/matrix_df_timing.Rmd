@@ -2,6 +2,7 @@
 title: Speed of  Data frame  vs.  Matrix
 output: html_document
 author: William Dunlap and Martin Maechler
+date: Run on `r Sys.Date()`
 ---
 
 Started from an E-mail
@@ -12,10 +13,18 @@ William Dunlap | R-help mailing list | 17 Mar 2014 | Subject: Re: **data frame v
 MM, 2016: From the timings below, note how **much faster** R is two years later!
 
 ```{r, echo=FALSE}
-require(knitr)
+library(knitr)
 opts_chunk$set(comment = NA, ## do not prepend all outputs with "##"
                tidy=FALSE)   ## do leave the source as _I_ have formatted them
 ## tidy=FALSE : important here, because it even *wraps* some comments into one line
+```
+
+MM, 2018: Since R version 3.4.0, by default, R uses *just in time* (= _JIT_) auto-compilation.
+The following line *disables* this --- so we can make the comparison as in earlier versions of R:
+```{r, disable-JIT}
+compiler::enableJIT(-1) # shows current auto-compilation "level".
+## Turn it off:
+oL <- compiler::enableJIT(0) # (-> level 0: it is turned off)
 ```
 
 Duncan Murdoch's analysis suggests another way to do this:
