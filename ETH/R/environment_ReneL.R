@@ -57,6 +57,6 @@ histogram(~ Petal.Width | Species, data = iris,
 
 ## Now, giving panel.histogramM() the environment of panel.histogram() ...
 environment(panel.histogramM) <- environment(panel.histogram)
-## makes the plot work!
+## makes the plot work!  {and also shows the  "modified panel function"}
 histogram(~ Petal.Width | Species, data = iris,
           panel = panel.histogramM)
