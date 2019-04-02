@@ -94,8 +94,7 @@
 #### Packages and (their) Namespaces -- wrap up
 
  - Packages and their Namespaces: Why are namespaces needed: Rmd
-    [whyNamespaces.Rmd](R/whyNamespaces.Rmd) and
-	[its html](R/whyNamespaces.html).
+    [whyNamespaces.Rmd](R/whyNamespaces.Rmd) (no longer renders very nicely).
 
  - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
 
