@@ -49,6 +49,7 @@ x["C"]
 x[["C"]]
 `names<-`(x,letters[1:10] )
 x <- `names<-`(x,letters[1:10] )
+attributes(x)
 
 ## Atomic objects:  numeric, character, logical,... vectors
 ## ---------------  and even matrices of those:
@@ -65,5 +66,6 @@ D[11]
 
 `names<-`
 typeof(`names<-`) # builtin
+class(class)
 
 `dim<-`

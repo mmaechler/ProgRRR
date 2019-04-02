@@ -7,7 +7,8 @@ options(keep.source = TRUE)
 knitr::opts_chunk$set(size = "small", fig.align = "center")
 
 ## ------------------------------------------------------------------------
-srcfile <- system.file("samples", "bootlmEx.R", package = "proftools")
+(srcfile <- system.file("samples", "bootlmEx.R", package = "proftools"))
+# .. also quickly browse it
 
 ## ----eval = FALSE--------------------------------------------------------
 #  profout <- tempfile()
@@ -37,7 +38,8 @@ hotPaths(pd, total.pct = 10.0)
 
 ## ------------------------------------------------------------------------
 filteredPD <- filterProfileData(pd, select = "withVisible", skip = 4)
-
+f.......PD <- filterProfileData(pd,                         skip = 4)
+all.equal(filteredPD, f.......PD) # |-> TRUE  #--> select =".." here unneeded
 ## ------------------------------------------------------------------------
 hotPaths(filteredPD, total.pct = 10.0)
 

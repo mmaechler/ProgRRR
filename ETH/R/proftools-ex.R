@@ -13,7 +13,8 @@ list.files(doc.dir)
                  ## vvvvvvvvvvvvvvv to get full path names:
 list.files(doc.dir, full.names=TRUE)
 
-## --> now open (my slightly adapted version ofthe vignette)  ./proftools-vignette.R
+## --> now open (my slightly adapted version of the vignette)
+'./proftools-vignette.R'
 
 
 ## or show the pdf

@@ -1,4 +1,4 @@
-# Examples from Cheat Sheet
+# Examples from Cheat Sheet (RStudio contrib, CC BY Ian Kopacka)
 
 ```{r}
 string <- c("Hiphopopotamus", "Rhymenoceros", "time for bottomless lyrics")
@@ -12,6 +12,11 @@ grep(pattern, string, value = TRUE) # # [1] "Hiphopopotamus"  "time ...."
 
 grepl(pattern, string)
 ##  ^ logical  --> [1]  TRUE FALSE  TRUE
+
+grep("o", string, value=TRUE)  # everywhere
+grep("om", string, value=TRUE) # once
+grep("o[mt]", string, value=TRUE) # 2 x
+
 ```
 
 ## 2 _Locate_ patterns : Find starting position

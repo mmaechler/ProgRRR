@@ -4,11 +4,12 @@
 
 (e <- environment( mean )) # namespace:base
 parent.env(e)# globalenv of course (because 'e' is)
-try( asNamespace("package:base") ) # but
-try( asNamespace("base") ) # but
+try( asNamespace("package:base") ) # not ok, but
+try( asNamespace("base") ) # is correct
+asNamespace("Matrix") # etc .. for all packages
 
 
-##--
+##--g
 nm.stats <- environment( lm ) # <environment: namespace:stats>
 str(L1 <- ls(envir = nm.stats)) # chr [1:1092] "[.acf" "[.formula" "[.terms" "[.ts" ...
 str(L2 <- ls("package:stats"))  # chr [1: 446] "acf" "acf2AR" "add.scope" "add1" "addmargins" ...

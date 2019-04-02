@@ -1,3 +1,4 @@
+
 ---
 title: Performance
 author: Hadley Wickham --- very partly modified by Martin Maechler

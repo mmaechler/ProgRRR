@@ -16,8 +16,8 @@ if(FALSE) ## not yet at beginning --- the same but showing environments!
 f <- function(y) {
 
   h <- function() {
-      print(ls(environment()))
-      return(d*(w+y))
+      cat("h: "); print(ls(environment()))
+      d*(w+y)
   }
 
   print(ls(environment(h)))
@@ -70,4 +70,4 @@ s0 ## prints .... last line:
 
 ls( environment(s0) ) # aha, from the environment
 ls.str( environment(s0) )
-spl
+
