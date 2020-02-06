@@ -1,6 +1,6 @@
 <!-- new in Feb.2017; working from previous
   ~/Vorl/R/Progr_w_R/2016-webpage/index.md -->
-# Programming with *R* for *R*eproducible *R*esearch - 'Prog R^3'
+# Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
 ## Table of Contents
 
@@ -15,9 +15,10 @@
  - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html]) Question 7.31;
  	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd)
 
-   In R,
-   everything that **exists** is an object;
-   everything that **happens** is a function call
+   In R:
+   
+       Everything that **exists** is an object;  
+       Everything that **happens** is a function call
 
  - Is that true?  Which function is called in `x <- 3` ? [R/functions-1.R](R/functions-1.R)
 
