@@ -12,7 +12,7 @@
    Healy's (see [here](https://kieranhealy.org/resources/)) visualization:
    [Rmarkdown Diagram](https://polybox.ethz.ch/index.php/s/7vlx3zTAAqkoGyX).
 
- - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html]) Question 7.31;
+ - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html) Question 7.31;
  	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd)
 
    In R:
