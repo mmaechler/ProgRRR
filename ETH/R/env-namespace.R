@@ -9,7 +9,7 @@ try( asNamespace("base") ) # is correct
 asNamespace("Matrix") # etc .. for all packages
 
 
-##--g
+##--
 nm.stats <- environment( lm ) # <environment: namespace:stats>
 str(L1 <- ls(envir = nm.stats)) # chr [1:1092] "[.acf" "[.formula" "[.terms" "[.ts" ...
 str(L2 <- ls("package:stats"))  # chr [1: 446] "acf" "acf2AR" "add.scope" "add1" "addmargins" ...
@@ -32,7 +32,9 @@ getAnywhere("coef.default")
 
 stats ::: coef.default ## *need* 3 ":" because it is "hidden": only in namespace
 
-lm <- 1:10 # in globalenv
+`:::`  #  a very simple 3-line function !!
+
+lm <- 1:10 # in globalenv  --- is "masking" the real lm() ...
 
 stats :: lm # the real 'lm' function
 stats ::: lm # works too
@@ -81,6 +83,6 @@ ap1[[length(ap1) - 2]] ## the 'Autoloads'
 ## Q:  Can we put an "own" environment into the search() path ?
 ## A:  Yes, and that can be important: The answer is
 attach
-## --  and there's a very nice (;-)  function
+## --  and there's a very nice (;-)  function { I wrote .. so I should find it nice ;-) }
 sfsmisc :: sourceAttach
 ## which takes  some.R   file, and source()s that into a new location in the search path
