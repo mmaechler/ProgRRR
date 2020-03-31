@@ -95,7 +95,7 @@
 #### Packages and (their) Namespaces -- wrap up
 
  - Packages and their Namespaces: Why are namespaces needed: Rmd
-    [whyNamespaces.Rmd](R/whyNamespaces.Rmd) (no longer renders very nicely).
+    [whyNamespaces.Rmd](R/whyNamespaces.Rmd).
 
  - Finish *How R Searches and Finds Stuff* (from Week 4): Namespaces, imports
 
@@ -137,8 +137,7 @@
 
 ### Lecture attestation (Testat):
 
-In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block,
-in 2017 specifically on April 11 (same time, same place as lecture).
+In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block. ... not in 2020 due to the Corona lockdown.
 
 ### Recommended Reading {#recommended-reading .heading}
 
@@ -151,8 +150,7 @@ in 2017 specifically on April 11 (same time, same place as lecture).
 -   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***,
     [online](http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/);\
     Tough read, but helpful with its nice illustrations. Do consider
-    [Duncan Murdoch's note  about it](http://article.gmane.org/gmane.comp.lang.r.general/306878﻿)
-	with minor caveats.
+    [Duncan Murdoch's note about it] ((link to archive missing)) with minor caveats.
 
 ### Miscellaneous on Programming (with R) {#miscellaneous-on-programming-with-r .heading}
 
@@ -165,4 +163,4 @@ in 2017 specifically on April 11 (same time, same place as lecture).
 ---
 [Martin Maechler](https://stat.ethz.ch/~maechler),
 [Seminar for Statistics](https://stat.ethz.ch/),
-[ETH Zurich](https://www.ethz.ch.)
+[ETH Zurich](https://www.ethz.ch).
