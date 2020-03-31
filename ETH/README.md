@@ -139,7 +139,7 @@
 
 In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block. ... not in 2020 due to the Corona lockdown.
 
-### Recommended Reading {#recommended-reading .heading}
+### Recommended Reading <!-- {#recommended-reading .heading} -->
 
 -   Norman Matloff (2011) The Art of R Programming - A tour of
     statistical software design.\
@@ -150,9 +150,9 @@ In order to obtain the ECTS credit point you have to pass the exam -- answering 
 -   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***,
     [online](http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/);\
     Tough read, but helpful with its nice illustrations. Do consider
-    [Duncan Murdoch's note about it] ((link to archive missing)) with minor caveats.
+    [Duncan Murdoch's note about it](https://stat.ethz.ch/pipermail/r-help/2014-March/372036.html) with minor caveats.
 
-### Miscellaneous on Programming (with R) {#miscellaneous-on-programming-with-r .heading}
+### Miscellaneous on Programming (with R) <!-- {#miscellaneous-on-programming-with-r .heading}  -->
 
 -   "Literate Programming" by Donald Knuth
 -   "The Elements of Programming Style" by Kernighan and Plauger:
