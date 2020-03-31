@@ -78,7 +78,7 @@ cbind(show    = sapply(l.ex, myShow, max.length = 16),
       st.mode = sapply(l.ex, storage.mode),
       mode    = sapply(l.ex, mode),
       class   = sapply(l.ex, class)) -> tab.ex
-```
+```                                     #=====
 Now instead of printing this directly - which is readable and nice already,
 let's be "advanced" and use a `knitr` package feature to produce "raw markdown" tables:
 ```{r table-show, results='asis'}

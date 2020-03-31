@@ -87,8 +87,10 @@ microbenchmark(
 ## to do system.time() ?
 Ex  <-  expression(id=x, sq=x^2, x.x= x*x, rt=sqrt(x), p0.5 = x ^ 0.5)
 
-lapply(Ex, system.time) ##  all 0
-lapply(Ex, function(expr) system.time(for(i in 1:10000) r <- eval(expr)))
+  sapply(Ex, system.time) ##  all 0
+t(sapply(Ex, function(expr)
+  system.time(for(i in 1:10000)r <- eval(expr))))
+## what's the cost of  '<-' (well, memory allocation!):
 system.time(for(i in 1:100000) r <- x)
 
 sapply(Ex, class)

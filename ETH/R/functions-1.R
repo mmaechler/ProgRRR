@@ -1,5 +1,5 @@
-## In R,
 ## Everything that **exists** is an object;
+## In R,
 ## Everything that **happens** is a function call :
 
 ## In the slides "Using R, Part 2 (2012)", we were looking at function f.maxi().
@@ -41,9 +41,9 @@ methods("[<-")
 
 ## The difference between "[" and "[[" already shows with a simple named vector:
 x <- 1:10
-names(x)  <- LETTERS[1:10]# does *not* call 'names' function
+names(x) <- LETTERS[1:10]# does *not* call 'names' function
 x
-Q <- quantile(rnorm(50))
+Q <- quantile(rnorm(50)) ; Q
 sum(x) # it is a vector
 x["C"]
 x[["C"]]
@@ -66,6 +66,7 @@ D[11]
 
 `names<-`
 typeof(`names<-`) # builtin
+class (`names<-`) # "function"
 class(class)
 
 `dim<-`

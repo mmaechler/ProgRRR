@@ -11,6 +11,7 @@ William Dunlap | R-help mailing list | 17 Mar 2014 | Subject: Re: **data frame v
 [https://stat.ethz.ch/pipermail/r-help/2014-March/372323.html](R-help: 4th message of thread)
 
 MM, 2016: From the timings below, note how **much faster** R is two years later!
+          (and even faster currently, by another order of magnitude)
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -48,7 +49,7 @@ dumkoll <- function(n = 1000, df = TRUE){
                         # if (!(i %% 100)) cat("i = ", i, "\n")
                         dfr$x[i] <- dfr$x[i-1]
                 }
-        }else{
+        }else{ # df is FALSE -- use matrix :
                 dm <- as.matrix(dfr)
                 for (i in 2:NROW(dm)){
                         # if (!(i %% 100)) cat("i = ", i, "\n")

@@ -133,6 +133,7 @@ environment()
 ## < environment: R_GlobalEnv >
 Test()
 ## < environment: 0x0000000006ce9b58 >
+Test() ## different
 environment(Test)
 ## globalenv
 

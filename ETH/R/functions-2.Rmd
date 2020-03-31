@@ -62,6 +62,18 @@ How to fix?
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 ```{r}
 rm("[<-")
 x[1] <- 10 ; x ## aaahh... life is well again
