@@ -12,7 +12,7 @@ Short answer: __To prevent name conflicts and to allow modular programming in pa
 _Note_: The source of this presentation is MM's `whyNamespaces.Rmd`
 
 
-Example from Luke Tierney (2003)'s  introductory article on namespaces
+Example from **Luke Tierney (2003)**'s  introductory article on namespaces
 
 ```{r}
 mydnorm <- function(z)
