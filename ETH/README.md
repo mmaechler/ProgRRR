@@ -15,7 +15,7 @@
    Healy's (see [here](https://kieranhealy.org/resources/)) visualization:
    [Rmarkdown Diagram](https://polybox.ethz.ch/index.php/s/7vlx3zTAAqkoGyX).
 
- - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html) Question 7.31;
+ - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html) [Question 7.31](https://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f);
  	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd)
 
    In R:
