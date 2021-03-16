@@ -1,5 +1,5 @@
-## Everything that **exists** is an object;
 ## In R,
+## Everything that **exists** is an object;
 ## Everything that **happens** is a function call :
 
 ## In the slides "Using R, Part 2 (2012)", we were looking at function f.maxi().
@@ -21,12 +21,12 @@ x[2]   # is exactly the same as
 x  # everything that happens is a function call -- which function here ?
 
 
+"Read, Eval, Print - Loop" # REPL
 
 
 ##=>
 print
 methods("print") # *many*   --- do also have a look the help page  ?methods
-
 
 
 

@@ -1,7 +1,7 @@
 ---
 title: Language Objects in R
 author: Martin Maechler
-date: "Aug. 28, 2015  (last change: Feb.27, 2018; rendered at `r Sys.Date()`)" # format(Sys.time(), "%H:%M:%OS3")
+date: "Aug. 28, 2015  (last change: Mar. 2, 2021; rendered at `r Sys.Date()`)" # format(Sys.time(), "%H:%M:%OS3")
 output:
   html_document:
     highlight: tango
@@ -43,7 +43,7 @@ Since in R,
 we want to find out what "kind" of an object we have.
 The most useful "user-level" function to get an idea about an object is `str()` for displaying the **str**ucture of an R object...  It is used very often interactively, to get both a bit of an overview and some details about object's structure.
 `str()` is not meant to be used as tool to be used in other functions, so from a programmeR's view,
-the standard functions for object inspectionto use are `class()` which is "high-level" and `typeof()` which is low-level.
+the standard functions for object inspection to use are `class()` which is "high-level" and `typeof()` which is low-level.
 For historical reasons (back compatibility with **S** / **S+**), another low-level inspector function is `storage.mode()`  and another higher-level one is `mode()`.
 
 Here, we use them on a somewhat representative collection of R objects (all conveniently put in a `list`)
@@ -77,8 +77,9 @@ cbind(show    = sapply(l.ex, myShow, max.length = 16),
       typeof  = sapply(l.ex, typeof),
       st.mode = sapply(l.ex, storage.mode),
       mode    = sapply(l.ex, mode),
-      class   = sapply(l.ex, class)) -> tab.ex
-```                                     #=====
+      class   = sapply(l.ex, class)) -> tab.ex                                                                          #=====
+```
+
 Now instead of printing this directly - which is readable and nice already,
 let's be "advanced" and use a `knitr` package feature to produce "raw markdown" tables:
 ```{r table-show, results='asis'}
@@ -89,7 +90,7 @@ print(sessionInfo(), locale=FALSE)
 ```
 
 <!-- Note the default of the  `backtick` argument of function `deparse()`.
- It currenly is `mode(expr) %in% c("call", "expression", "(", "function")`.
+ It currently is `mode(expr) %in% c("call", "expression", "(", "function")`.
  I had tried to change this (and add "name" to the strings) in Sep.2017,
  but that broke a couple of (not unimportant) CRAN packages.
 I found that this unfortunately meant the `symbol`s (aka `name`s) would not be correctly deparsed by default.  E.g., the above `nb` would not by default use `backtick = TRUE` but that would have been quite desirable.
