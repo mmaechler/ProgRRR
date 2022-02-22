@@ -2,9 +2,6 @@
   ~/Vorl/R/Progr_w_R/2016-webpage/index.md -->
 # Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
-### Zoom Link for lecture (Tue 14.15-16.00), and *recordings* of lectures:
-   via _Mystudies_ "Teaching Material" only for registered students
-
 ## Table of Contents
 
 ### Week 1 -- Introduction
