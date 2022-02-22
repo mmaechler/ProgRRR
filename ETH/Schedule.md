@@ -1,14 +1,14 @@
 # Schedule of Lectures  in *first half* of semester
-# 2021  
+# 2022 
 
-According to ETH ['VVZ'](www.vvz.ethz.ch/Vorlesungsverzeichnis/lehrveranstaltung.view?semkez=2021S&lehrveranstaltungId=1383248&lang=en):
+According to ETH ['VVZ'](www.vvz.ethz.ch/Vorlesungsverzeichnis/lehrveranstaltung.view?semkez=2022S&lehrveranstaltungId=1383248&lang=en):
 
-1) 23.02.
-2) 02.03.
-3) 09.03.
-4) 16.03.
-5) 23.03. 
-6) 30.03.  (then one week Easter break)
-7) 13.04.
+1) 22.02.
+2) 01.03.
+3) 08.03.
+4) 15.03.
+5) 22.03. 
+6) 29.03.
+7)  5.04.
 
-## The *graded semester performance* is scheduled for  20.04., *April 20* 
+## The *graded semester performance* is scheduled for  12.04., *April 12* 
