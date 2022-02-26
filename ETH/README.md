@@ -2,6 +2,9 @@
   ~/Vorl/R/Progr_w_R/2016-webpage/index.md -->
 # Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
+## ETH lecture 401-6228-00L 
+catalogue data SS 2022 [vvz.ethz.ch](http://vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2022S&ansicht=ALLE&lerneinheitId=157215&lang=en)
+
 ## Table of Contents
 
 ### Week 1 -- Introduction
