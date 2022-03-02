@@ -3,7 +3,8 @@
 # Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
 ## ETH lecture 401-6228-00L 
-catalogue data SS 2022 [vvz.ethz.ch](http://vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2022S&ansicht=ALLE&lerneinheitId=157215&lang=en)
+- catalogue data SS 2022 [vvz.ethz.ch](http://vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2022S&ansicht=ALLE&lerneinheitId=157215&lang=en)
+- video recordings of lectures (*but* the first): [video.ethz.ch](https://video.ethz.ch/lectures/d-math/2022/spring/401-6228-00L.html)
 
 ## Table of Contents
 
