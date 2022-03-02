@@ -15,7 +15,7 @@ output: html_document
 
 
 ```{r, library-does-1-and-2, eval=FALSE}
-library # a bit long (including "help"), but apart from that and error checking it does
+library # a bit long (incl "help" & error checking), but basically it does
  ns <- loadNamespace(package, lib.loc)       # == 1)
  env <- attachNamespace(ns, pos = pos, deps) # == 2)
 ```
@@ -27,7 +27,7 @@ library # a bit long (including "help"), but apart from that and error checking 
 
 
 ### R functions related to this:
-* `loadNamespace()`
+* `loadNamespace()`  , `loadedNamespaces()`
 * `::`  ( and also `:::` )
 *  `sessionInfo()`
 *  `getAnywhere()`

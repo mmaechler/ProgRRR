@@ -11,7 +11,7 @@ William Dunlap | R-help mailing list | 17 Mar 2014 | Subject: Re: **data frame v
 [https://stat.ethz.ch/pipermail/r-help/2014-March/372323.html](R-help: 4th message of thread)
 
 MM, 2016: From the timings below, note how **much faster** R is two years later!
-          (and even faster currently, by another order of magnitude)
+    2021: and even faster currently, by another order of magnitude)
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -88,7 +88,7 @@ sapply(n, function(n)system.time(dumkoll(n, df="quicker"))[1:3])
 I also timed the 2 faster cases for n=10^6 and the time still looks linear
 in n, with vector approach still taking about 60% the time of the matrix
 approach.     ((NB vvvvvvvvvv  `knitr` feature))
-```{r, system-1e6, cache=TRUE}
+```{r, system-1e6}, cache=TRUE}
 system.time(dumkoll(n=10^6, df=FALSE))
 # BD:   user  system elapsed
 #      11.65    0.12   11.82

@@ -16,8 +16,7 @@ eval(     quote( a+b ), envir = e1)# ok
 eval(quote( s() ), envir = e1)# error
 environment(s)
 
-
-## to make it work:
+## to make it work, use the powerful and hence "dangerous"  `environment<-` :
 environment(s) <- e1
 s()
 environment(s) <- e2
@@ -33,3 +32,18 @@ s()
 
 ## but rather you must additionally get it to have the correct "enclosing environment"
 environment(<thisFun>) <- asNamespace("pkgName")
+## e.g.,
+median
+methods(median)
+##--> median.default
+methods(quantile)
+sink("quantile.default.R") # ==> "console output" goes to file
+getAnywhere("quantile.default")
+sink() # end the previous  sink()ing ..
+
+## or {slightly nicer, also keeps  `quantile.default <- ...`}:
+dump("quantile.default", file="quant.R", envir = asNamespace("stats"))
+
+## use the modfied ("fixed") version of the function
+environment(quantile.default) <- asNamespace("stats")
+

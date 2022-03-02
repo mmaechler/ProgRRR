@@ -3105,6 +3105,76 @@ slide:not(.current) .plotly.html-widget{
   display: block;
 }
 
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode { white-space: pre; position: relative; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    code.sourceCode { white-space: pre-wrap; }
+    code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+        
   </style>
 
 
@@ -3179,7 +3249,7 @@ mydnorm(-2:2)</pre>
 
 <pre class = 'prettyprint lang-r'>conflicts()</pre>
 
-<pre >## [1] &quot;body&lt;-&quot;    &quot;kronecker&quot; &quot;pi&quot;</pre>
+<pre >## [1] &quot;body&lt;-&quot;    &quot;kronecker&quot; &quot;pi&quot;        &quot;plot&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>find(&quot;pi&quot;)</pre>
 
@@ -3273,8 +3343,8 @@ mydnorm(-2:2)</pre>
 ##  [6] &quot;enquos&quot;      &quot;ensym&quot;       &quot;ensyms&quot;      &quot;expr&quot;        &quot;quo&quot;        
 ## [11] &quot;quo_name&quot;    &quot;quos&quot;        &quot;sym&quot;         &quot;syms&quot;        &quot;vars&quot;       
 ## [16] &quot;errbar&quot;      &quot;last&quot;        &quot;filter&quot;      &quot;lag&quot;         &quot;body&lt;-&quot;     
-## [21] &quot;format.pval&quot; &quot;intersect&quot;   &quot;kronecker&quot;   &quot;pi&quot;          &quot;Position&quot;   
-## [26] &quot;setdiff&quot;     &quot;setequal&quot;    &quot;union&quot;       &quot;units&quot;</pre>
+## [21] &quot;format.pval&quot; &quot;intersect&quot;   &quot;kronecker&quot;   &quot;pi&quot;          &quot;plot&quot;       
+## [26] &quot;Position&quot;    &quot;setdiff&quot;     &quot;setequal&quot;    &quot;union&quot;       &quot;units&quot;</pre>
 
 <pre class = 'prettyprint lang-r'>head(search())</pre>
 
@@ -3297,59 +3367,62 @@ mydnorm(-2:2)</pre>
 
 <pre class = 'prettyprint lang-r'>sessionInfo() ## note the  &quot; loaded via namespace (and not attached) &quot;</pre>
 
-<pre >## R version 3.6.3 Patched (2020-02-29 r77878)
+<pre >## R version 4.0.5 Patched (2021-03-31 r80146)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Fedora 30 (Thirty)
+## Running under: Fedora 32 (Thirty Two)
 ## 
 ## Matrix products: default
-## BLAS:   /scratch/users/maechler/R/D/r-patched/inst-shlib/lib/libRblas.so
-## LAPACK: /scratch/users/maechler/R/D/r-patched/inst-shlib/lib/libRlapack.so
+## BLAS:   /u/maechler/R/D/r-patched/inst-shlib/lib/libRblas.so
+## LAPACK: /u/maechler/R/D/r-patched/inst-shlib/lib/libRlapack.so
 ## 
 ## attached base packages:
 ## [1] graphics  grDevices datasets  stats     utils     methods   base     
 ## 
 ## other attached packages:
-## [1] dplyr_0.8.4     Hmisc_4.4-0     ggplot2_3.3.0   Formula_1.2-3  
-## [5] survival_3.1-8  lattice_0.20-40 sfsmisc_1.1-5  
+## [1] dplyr_1.0.5     Hmisc_4.5-0     ggplot2_3.3.3   Formula_1.2-4  
+## [5] survival_3.2-10 lattice_0.20-41 sfsmisc_1.1-10 
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] tidyselect_1.0.0    xfun_0.12           purrr_0.3.3        
-##  [4] splines_3.6.3       colorspace_1.4-1    htmltools_0.4.0    
-##  [7] yaml_2.2.1          base64enc_0.1-3     rlang_0.4.5        
-## [10] pillar_1.4.3        foreign_0.8-76      glue_1.3.1         
-## [13] withr_2.1.2         RColorBrewer_1.1-2  jpeg_0.1-8.1       
-## [16] lifecycle_0.2.0     stringr_1.4.0       munsell_0.5.0      
-## [19] gtable_0.3.0        htmlwidgets_1.5     evaluate_0.14      
-## [22] latticeExtra_0.6-29 knitr_1.28          htmlTable_1.13.3   
-## [25] Rcpp_1.0.4          acepack_1.4.1       scales_1.1.0       
-## [28] backports_1.1.5     checkmate_2.0.0     gridExtra_2.3      
-## [31] png_0.1-7           digest_0.6.25       stringi_1.4.6      
-## [34] grid_3.6.3          tools_3.6.3         magrittr_1.5       
-## [37] tibble_2.1.3        cluster_2.1.0       crayon_1.3.4       
-## [40] pkgconfig_2.0.3     Matrix_1.2-18       data.table_1.12.8  
-## [43] assertthat_0.2.1    rmarkdown_2.1       rstudioapi_0.11    
-## [46] R6_2.4.1            rpart_4.1-15        nnet_7.3-12        
-## [49] compiler_3.6.3</pre>
+##  [1] tidyselect_1.1.0    xfun_0.22           bslib_0.2.4        
+##  [4] purrr_0.3.4         splines_4.0.5       colorspace_2.0-0   
+##  [7] vctrs_0.3.7         generics_0.1.0      htmltools_0.5.1.1  
+## [10] yaml_2.2.1          base64enc_0.1-3     utf8_1.2.1         
+## [13] rlang_0.4.10        jquerylib_0.1.3     pillar_1.5.1       
+## [16] foreign_0.8-81      glue_1.4.2          withr_2.4.1        
+## [19] DBI_1.1.1           RColorBrewer_1.1-2  jpeg_0.1-8.1       
+## [22] lifecycle_1.0.0     stringr_1.4.0       munsell_0.5.0      
+## [25] gtable_0.3.0        htmlwidgets_1.5.3   evaluate_0.14      
+## [28] latticeExtra_0.6-29 knitr_1.31          fansi_0.4.2        
+## [31] htmlTable_2.1.0     backports_1.2.1     checkmate_2.0.0    
+## [34] scales_1.1.1        jsonlite_1.7.2      debugme_1.1.0      
+## [37] gridExtra_2.3       png_0.1-7           digest_0.6.27      
+## [40] stringi_1.5.3       grid_4.0.5          tools_4.0.5        
+## [43] magrittr_2.0.1      sass_0.3.1          tibble_3.1.0       
+## [46] cluster_2.1.1       crayon_1.4.1        pkgconfig_2.0.3    
+## [49] ellipsis_0.3.1      Matrix_1.3-2        data.table_1.14.0  
+## [52] rstudioapi_0.13     assertthat_0.2.1    rmarkdown_2.7      
+## [55] rpart_4.1-15        R6_2.5.0            nnet_7.3-15        
+## [58] compiler_4.0.5</pre>
 
 </article></slide><slide class=""><hgroup><h2>loaded … (and not attached)</h2></hgroup><article  id="loaded-and-not-attached">
 
 <p><code>sessionInfo()</code> <!-- the following needs package `sfsmisc`, R-forge version >= 2015-09-05: --></p>
 
-<pre >## R version 3.6.3 Patched (2020-02-29 r77878)
+<pre >## R version 4.0.5 Patched (2021-03-31 r80146)
 ##  ....... 
 ##  ....... 
-## [16] lifecycle_0.2.0     stringr_1.4.0       munsell_0.5.0      
-## [19] gtable_0.3.0        htmlwidgets_1.5     evaluate_0.14      
-## [22] latticeExtra_0.6-29 knitr_1.28          htmlTable_1.13.3   
-## [25] Rcpp_1.0.4          acepack_1.4.1       scales_1.1.0       
-## [28] backports_1.1.5     checkmate_2.0.0     gridExtra_2.3      
-## [31] png_0.1-7           digest_0.6.25       stringi_1.4.6      
-## [34] grid_3.6.3          tools_3.6.3         magrittr_1.5       
-## [37] tibble_2.1.3        cluster_2.1.0       crayon_1.3.4       
-## [40] pkgconfig_2.0.3     Matrix_1.2-18       data.table_1.12.8  
-## [43] assertthat_0.2.1    rmarkdown_2.1       rstudioapi_0.11    
-## [46] R6_2.4.1            rpart_4.1-15        nnet_7.3-12        
-## [49] compiler_3.6.3</pre></article></slide>
+## [25] gtable_0.3.0        htmlwidgets_1.5.3   evaluate_0.14      
+## [28] latticeExtra_0.6-29 knitr_1.31          fansi_0.4.2        
+## [31] htmlTable_2.1.0     backports_1.2.1     checkmate_2.0.0    
+## [34] scales_1.1.1        jsonlite_1.7.2      debugme_1.1.0      
+## [37] gridExtra_2.3       png_0.1-7           digest_0.6.27      
+## [40] stringi_1.5.3       grid_4.0.5          tools_4.0.5        
+## [43] magrittr_2.0.1      sass_0.3.1          tibble_3.1.0       
+## [46] cluster_2.1.1       crayon_1.4.1        pkgconfig_2.0.3    
+## [49] ellipsis_0.3.1      Matrix_1.3-2        data.table_1.14.0  
+## [52] rstudioapi_0.13     assertthat_0.2.1    rmarkdown_2.7      
+## [55] rpart_4.1-15        R6_2.5.0            nnet_7.3-15        
+## [58] compiler_4.0.5</pre></article></slide>
 
 
   <slide class="backdrop"></slide>

@@ -45,7 +45,7 @@ Imagine you've loaded a data file, like the one below, that uses $-99$ to repres
 set.seed(1014)
 df <- data.frame(replicate(6, sample(c(1:10, -99), 10, rep = TRUE)))
 names(df) <- letters[1:6]
-head(df)
+df # (show the *full*, here we know it's small)
 ```
 
 When you first started writing R code, you might have solved the problem with copy-and-paste:

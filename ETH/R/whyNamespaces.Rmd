@@ -51,7 +51,7 @@ What if you use many packages?  You get even more conflicts
 ## Packages in `search()` - conflicts
 
 ```{r, Hmisc}
-require("Hmisc")
+require("Hmisc") # or   library("Hmisc")
 ```
 ## More packages ... more conflicts
 ```{r, dplyr}

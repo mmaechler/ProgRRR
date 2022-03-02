@@ -17,19 +17,21 @@ myEnvironment
 m  <- myEnvironment
 m$abc <- LETTERS  # changing m ..
 ls(myEnvironment) #            ---> !
+names(m)
 
 ## every environment (except R_EmptyEnv) has an enclosure.
 ## Who's myEnvironment's enclosure?  find out using parent.env()
 parent.env( myEnvironment ) # --> It's "R_GlobalEnv"
 
 ## Who's R_GlobalEnv's enclosing environment?
-## Its the environment called "package:stats" (in my installation, might be different on yours)
+## It's the environment called "package:graphics"
+## for me, usually, as I'm *not* using Rstudio
 parent.env( parent.env( myEnvironment ) )
 ## MM: it's the last "attached" package in search(), i.e. at position [2] or [3] in search()
 head(search())
 ## and one further -- still in the search()
 parent.env(parent.env( parent.env( myEnvironment ) ))
-## .. continue till "base":
+## ... and *recursively* continue till "base":
 
 ## Excursion -- from  help(Reduce) ---
 Funcall <- function(f, ...) f(...)
@@ -37,22 +39,31 @@ Funcall <- function(f, ...) f(...)
 Iterate <- function(f, n = 1)
     function(x) Reduce(Funcall, rep.int(list(f), n), x, right = TRUE)
 
+(i1 <- Iterate(parent.env, n=1)) # -> function i1() is a closure.  What's it's "data" ?
+Iterate(parent.env, n=1)(globalenv())
+Iterate(parent.env, n=2)(globalenv())
+Iterate(parent.env, n=3)(globalenv())
+
+seq_along(search()) # 1 2 ... 12 (for me, currently)
 lapply(seq_along(search()),
        function(n) Iterate(parent.env, n=n) (globalenv()))
+## {the same thing  via a "named" function }
 nth.G.parent <- function(n, env) Iterate(parent.env, n=n) (env)
 lapply(seq_along(search()), nth.G.parent, env = globalenv())
 
-dropP <- function(x) { attr(x, "path") <- NULL ; x }
-nth.G.parent <- function(n, env) dropP(Iterate(parent.env, n=n) (env))
-lapply(seq_along(search()), nth.G.parent, env = globalenv())
+if(FALSE) { ## *NOT* a good idea !
+ ## CARE: currently can destroy your working search() .. by this !!
+ dropP <- function(x) { attr(x, "path") <- NULL ; x }
+ nth.G.parentD <- function(n, env) dropP(Iterate(parent.env, n=n) (env))
+ lapply(seq_along(search()), nth.G.parentD, env = globalenv())
+}
 
-## CARE: you can destroy your working search() path by dropping attributes!!
 
 ## Here's two other ways to ask the same question.
 ## This R_GlobalEnv must be special if it can retrieved using the identifier
 ## .GlobalEnv AND a function globalenv().  We'll discuss R_GlobalEnv later.
 parent.env( .GlobalEnv )
-## < environment: package:stats >
+## < environment: package:graphics >      <<=== the last R package you've attached
 ## ...
 ## ...
 ## ...
@@ -66,6 +77,7 @@ emptyenv()
 ## < environment: R_EmptyEnv >
 
 ## Why does myEnvironment have a funky name 0x0000000006ce0920?
+
 ## That's just the location of the environment in memory.
 
 ## We can add a friendly name by assigning a "name" attribute.
@@ -126,7 +138,7 @@ parent.env( myEnvironment2 )
 ## When R executes a function it automatically creates a new environment for that function.
 ## This is useful - variables/objects created inside the function will live in the new local environment.
 ## We call Test() to verify this.  We can see that Test() does NOT print R_GlobalEnv.
-## We didn't created any objects within Test().  If we had, they would live in the "0x0000000006ce9b58"
+## We didn't create any objects within Test().  If we had, they would live in the "0x0000000006ce9b58"
 ## environment while Test() is running.  When the function completes executing, the environment dies.
 Test <- function() { print( environment() ) }
 environment()
