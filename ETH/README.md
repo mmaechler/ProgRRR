@@ -142,7 +142,7 @@
 
 ### Lecture attestation (Testat):
 
-In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block. ... not in 2020 due to the Corona lockdown.
+In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block.
 
 ### Recommended Reading <!-- {#recommended-reading .heading} -->
 
