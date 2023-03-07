@@ -45,6 +45,7 @@
  - Functions in packages in R: [R/packages-search.Rmd](R/packages-search.Rmd)
  - The three parts of every (non-`.Primitive`) function: ....
  - Repeat and learn more on functions, reading H.Wickam's chapter [6. Functions](http://adv-r.had.co.nz/Functions.html)
+ - "The Pipe" - Another way to call functions 
  - Lexical Scoping - `environment` [R/envexample1.R](R/envexample1.R), and the small [R/envex2.R](R/envex2.R).
  - `environment`s : Beginnig of "Advanced R"s [8. Environments](http://adv-r.had.co.nz/Environments.html)
 
