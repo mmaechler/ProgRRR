@@ -126,8 +126,8 @@
 
  - Help pages for `grep` and `regexp`.
 
- - [Reg.Exp. Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
-   (RStudio contributed cheat sheets)
+ - [Reg.Exp. Cheat Sheet](RegExCheatsheet.pdf)
+   (originally a RStudio contributed cheat sheet, no longer available)
 
    R code for that : [reg-ex.Rmd](R/reg-ex.Rmd)
 
@@ -153,9 +153,12 @@ In order to obtain the ECTS credit point you have to pass the exam -- answering 
 	see [online](http://www.nostarch.com/artofr.htm) for data, R code.
 -   Hadley Wickham (2013 ff) ***Advanced R***, [online](http://adv-r.had.co.nz/)\
     *more advanced than our course; partly focused on his own packages*
--   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***,
-    [online](http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/);\
-    Tough read, but helpful with its nice illustrations. Do consider
+-   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***, originally at 
+    `http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/`, now
+    [available at](https://blog.thatbuthow.com/how-r-searches-and-finds-stuff/);
+    A "modern re-edition" of it (using Rmarkdown not available) at
+    [askming](https://askming.github.io/study_notes/Stats_Comp/Note-How%20R%20searches%20and%20finds%20stuff.html)
+    Tough read, but helpful with its nice illustrations. You may consider
     [Duncan Murdoch's note about it](https://stat.ethz.ch/pipermail/r-help/2014-March/372036.html) with minor caveats.
 
 ### Miscellaneous on Programming (with R) <!-- {#miscellaneous-on-programming-with-r .heading}  -->
