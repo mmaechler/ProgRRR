@@ -25,7 +25,7 @@
  - Is that true?  Which function is called in `x <- 3` ? [R/functions-1.R](R/functions-1.R)
 
 ### Week 2 -- Objects, Function Calls, "Functions everywhere"
- - Hadley Wickham's  Advanced R: [http://adv-r.had.co.nz]
+ - Hadley Wickham's  Advanced R (*first* edition): [http://adv-r.had.co.nz]
  - "Quiz" of Chapter 1 "Data Structures" --> `attributes`, atomic vectors,
    general vectors -- including `list()`s
  - _Everything that happens is a function call_ (more):	[R/functions-1.R](R/functions-1.R),
