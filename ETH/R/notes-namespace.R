@@ -12,7 +12,7 @@ sfsmisc::primes
 getAnywhere("primes")
 getAnywhere("primes.")
 
-##-> librrary
+##-> library
 
 ##-> help ( asNamespace ) -- Has interesting example :
 ##   ===================
@@ -40,5 +40,5 @@ ls(ns.M $ lazydata) #  about 88
 
 ## see also   ? getNamespaceImports
 
-`::` # calls getExportedValue
+`::` # no "special" primitive  [(no longer) calls getExportedValue]
 

@@ -4,6 +4,7 @@
 
 (e <- environment( mean )) # namespace:base
 parent.env(e)# globalenv of course (because 'e' is)
+## asNamespace()  or  getNamespace()  {as*() calls get*() if needed}
 try( asNamespace("package:base") ) # not ok, but
 try( asNamespace("base") ) # is correct
 asNamespace("Matrix") # etc .. for all packages
