@@ -17,7 +17,7 @@
 | Proj.Name                     | R pkg     | CRAN                                         | RDep | Last Up | JSS-DOI               | Note           | By |
 |-------------------------------|-----------|----------------------------------------------|-----:|---------|-----------------------|----------------|----|
 | Big Non-Gauss Spatio-Temporal | FRK       | https://cran.r-project.org/package=FRK       |    1 | 2024-04 | 10.18637/jss.v108.i10 | Cressie        |    |
-| Modeling Population Growth    | biogrowth | https://cran.r-project.org/package=biogrowth |    - | 2024-04 | 10.18637/jss.v107.i01 | tidy*; 11 vign |    |
+| Modeling Population Growth    | biogrowth | https://cran.r-project.org/package=biogrowth |    - | 2024-04 | 10.18637/jss.v107.i01 | tidy*; 11 vign | SGA |
 
 
 The JSS-DOI can be appended to  https://doi.org/  to get a link to an
