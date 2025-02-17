@@ -1,7 +1,7 @@
 # Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
 ## ETH lecture 401-6228-00L 
-- catalogue data SS 2024 [vvz.ethz.ch](https://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2024S&ansicht=KATALOGDATEN&lerneinheitId=176605&lang=en)
+- catalogue data SS 2025 [vvz.ethz.ch](https://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2025S&ansicht=ALLE&lerneinheitId=187163&lang=en)
 <!-- - video recordings of lectures: [video.ethz.ch](https://video.ethz.ch/lectures/d-mathematics/2022/spring/401-6228-00L.html) -->
 
 ## Table of Contents
@@ -141,7 +141,7 @@
 
 ### Lecture attestation (Testat):
 
-In order to obtain the ECTS credit point you have to pass the exam -- answering some questions, and writing R code - in a `*.Rmd` (R Markdown file) at the end of the teaching block.
+- You'd write a report, using R and Rmarkdown, about one of these [projects](projects.md) .
 
 ### Recommended Reading <!-- {#recommended-reading .heading} -->
 
