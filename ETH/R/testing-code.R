@@ -20,13 +20,14 @@ file.show("~/R/D/r-devel/R/src/library/base/R/stop.R")
 
 stopifnot(1 == 1, all.equal(pi, 3.14159265), 1 < 2) # all TRUE
 
+
 m <- matrix(c(1,3,3,1), 2, 2)
 stopifnot(m == t(m), diag(m) == rep(1, 2)) # all(.) |=>  TRUE
 
 stopifnot(length(10)) |> try() # gives an error: '1' is *not* TRUE
 ## even when   if(1) "ok"   works
 
-stopifnot(all.equal(pi, 3.141593),  2 < 2, (1:10 < 12), "a" < "b") |> try()
+stopifnot(all.equal(pi, 3.14159265),  2 < 2, (1:10 < 12), "a" < "b") |> try()
 ## More convenient for interactive "line by line" evaluation:
 stopifnot(exprs = {
   all.equal(pi, 3.1415927)
@@ -46,7 +47,7 @@ stopifnot(all.equal(rep(list(pi),4), list(3.1, 3.14, 3.141, 3.1415))) |> try()
 
 # The default error message can be overridden to be more informative:
 m[1,2] <- 12
-stopifnot("m must be symmetric"= m == t(m)) |> try()
+stopifnot("m must be symmetric"= m == t(m)) # |> try()
 #=> Error: m must be symmetric
 
 ##' warnifnot(): a "only-warning" version of stopifnot()
@@ -103,3 +104,6 @@ wc *.R
 "
 https://github.com/mmaechler/sfsmisc
 "                            #######
+
+## ./tests/  contains also several *.Rout.save  files
+## -------   ==> testing if  current R output equals to previous R output.
