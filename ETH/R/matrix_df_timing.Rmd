@@ -1,7 +1,7 @@
 ---
 title: Speed of  Data frame  vs.  Matrix
 output: html_document
-author: William Dunlap and Martin Maechler
+author:
 date: Run on `r Sys.Date()`
 ---
 
@@ -25,7 +25,7 @@ The following line *disables* this --- so we can make the comparison as in earli
 ```{r, disable-JIT}
 compiler::enableJIT(-1) # shows current auto-compilation "level".
 ## Turn it off:
-oL <- compiler::enableJIT(0) # (-> level 0: it is turned off)
+oL <- compiler::enableJIT(0) # (-> level 0: it is turned off)[i, 1] 
 ```
 
 Duncan Murdoch's analysis suggests another way to do this:
@@ -114,7 +114,7 @@ TIBCO Software
 wdunlap tibco.co
 
 ```{r, Rprof}
-Rprof("dumkoll.Rprof", interval = 0.005) # start profiling
+Rprof("dumkoll.Rprof", interval = 0.01) # start profiling
 dd <- dumkoll(50000, df=TRUE)
 Rprof(NULL) # stop profiling
 ## ?Rprof
@@ -124,7 +124,7 @@ sr
 So, indeed, the culprit is `$<-`, and specifically almost only the `data.frame` method of that.
 
 A "free" way to increase performance of R functions:
-R's byte compiler:
+R's byte compiler --- nowadays automatic 
 ```{r, compiler, results="hide"}
 require(compiler)
 ```{r, help-compiler, eval=FALSE}

@@ -12,7 +12,7 @@ output:
 
 In one way, since in R,
 
->    *Everything that happens is a function call*     (John Chambers, part 2),
+>    *Everything that happens is a function call*   (John Chambers, part 2),
 
 `call`s are the basic language objects in R.
 
@@ -30,6 +30,7 @@ c1 <- cc[[1]]; c1
 c2 <- cc[[2]]; c2
 
 typeof(c1)
+typeof(c2)
    str(c2)
 class(c1)
 ```

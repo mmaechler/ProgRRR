@@ -87,7 +87,7 @@ microbenchmark(
 ## to do system.time() ?
 Ex  <-  expression(id=x, sq=x^2, x.x= x*x, rt=sqrt(x), p0.5 = x ^ 0.5)
 
-  sapply(Ex, system.time) ##  all 0
+ sapply(Ex, system.time) ##  all 0
 t(sapply(Ex, function(expr)
   system.time(for(i in 1:10000)r <- eval(expr))))
 ## what's the cost of  '<-' (well, memory allocation!):
@@ -97,7 +97,26 @@ sapply(Ex, class)
 mb  <- do.call(microbenchmark, as.list(Ex))
 mb  <- do.call(microbenchmark,
                c(as.list(Ex), times=200))
+
 plot(mb)
+#   plot is *not* so useful ...   how to improve ??
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
 plot(mb, log="y", notch=TRUE)
 
 
@@ -109,7 +128,8 @@ In this example, you can see that using the special purpose `sqrt()` function is
 * 1 µs, then one million calls takes a second
 * 1 ns, then one billion calls takes a second
 
-The `sqrt()` function takes about 800 ns, or 0.8 µs, to compute the square root of 100 numbers. That means if you repeated the operation a million times, it would take 0.8s. This is unlikely to be a bottleneck in real code.
+The `sqrt()` function takes about 800 ns, or 0.8 µs, to compute the square root of 100 numbers. That means if you repeated the operation a million times, it would take 0.8s. This is unlikely to be a bottleneck in real code.7.37e-07 
+>     system.time(for (i in
 
 `microbenchmark()` takes multiple expressions as input, and displays summaries of the distribution of times. By default, `microbenchmark()` runs each expression 100 times (controlled by the `times` parameter), randomising the order of the expressions. It summarises the results with a minimum (`min`), lower quartile (`lq`), median, upper quartile (`uq`) and maximum (`max`). You normally want to focus on the median, but the upper and lower quartiles (`lq` and `uq`) are also useful to get a feel for the variability. You can see the complete distribution with the `boxplot()` method, or if ggplot2 is loaded, with `autoplot()`.
 
@@ -344,7 +364,8 @@ microbenchmark(
   squish_ife(x, -1, 1),
   squish_p(x, -1, 1),
   squish_in_place(x, -1, 1)
-)
+) -> mb ; mb
+plot(mb, log="y", notch=TRUE)
 ```
 
 There's quite a variation in speed: using `pmin()` and `pmax()` is about 3x faster than using `ifelse()`, and using subsetting directly is about twice as fast again. As we'll see in [Rcpp](#rcpp), we can often do even better by calling out to C++. The following example compares the best R implementation to a relatively simple (if verbose) implementation in C++. Even if you've never used C++, you should be able to follow the basic strategy: we loop over every element in the vector and perform a different action depending on whether the value is less than `a`, greater than `b`, or is ok. The C++ implementation is around 3x faster than the best pure R implementation.

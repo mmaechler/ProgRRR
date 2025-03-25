@@ -21,7 +21,8 @@ library # a bit long (incl "help" & error checking), but basically it does
 ```
 
 ### Every Package has two important "Meta data" files:
-* `DESCRIPTION`: contains `Depends:`, `Imports:`, ...
+* `DESCRIPTION` / `packageDescription("<pkg>")`:
+            contains `Depends:`, `Imports:`, ...
 * `NAMESPACE`: has `imports()` and `exports()`
               (plus `S3methods()`, `exportClasses()`, ...)
 

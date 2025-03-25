@@ -27,7 +27,7 @@ stopifnot(m == t(m), diag(m) == rep(1, 2)) # all(.) |=>  TRUE
 stopifnot(length(10)) |> try() # gives an error: '1' is *not* TRUE
 ## even when   if(1) "ok"   works
 
-stopifnot(all.equal(pi, 3.14159265),  2 < 2, (1:10 < 12), "a" < "b") |> try()
+stopifnot(all.equal(pi, 3.141593),  2 < 2, (1:10 < 12), "a" < "b") |> try()
 ## More convenient for interactive "line by line" evaluation:
 stopifnot(exprs = {
   all.equal(pi, 3.1415927)

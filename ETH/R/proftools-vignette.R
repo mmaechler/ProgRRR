@@ -21,6 +21,11 @@ knitr::opts_chunk$set(size = "small", fig.align = "center")
 ## ----cache = TRUE--------------------------------------------------------
 pd <- profileExpr(source(srcfile))
 
+## manually
+tmp <- tempfile()
+Rprof(tmp, source(srcfile))
+Rprof(NULL)
+
 ## ------------------------------------------------------------------------
 head(funSummary(pd), 10)
 

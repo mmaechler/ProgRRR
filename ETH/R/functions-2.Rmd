@@ -109,9 +109,9 @@ formals(formals)
 str( formals(formals) )
 deff <- formals(formals)[["fun"]]
 deff
-class(deff)  # call
+class(deff)  # 
 typeof(deff) # language
-```
+```?
 
 ### `missing()` allows to check if an argument has been specified  in the actual call:
 ```{r}

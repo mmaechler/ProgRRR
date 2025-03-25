@@ -11,17 +11,39 @@ c
 `<-`
 `[`
 
-## What *function* is  `[` ?
+`## What *function* is  `[` ?
 x <- 10:20
 `:`
 x[2]   # is exactly the same as
 `[`(x, 2)
 `[`(x, 2:3)
+`:`(3, 7)
+is.function(`:`)
 
-x  # everything that happens is a function call -- which function here ?
+
+ 
+# everything that happens is a function call -- which function here ?
+x
 
 
-"Read, Eval, Print - Loop" # REPL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"Read (incl. Parse), Eval, Print - Loop" # REPL
 
 
 ##=>
@@ -31,7 +53,7 @@ methods("print") # *many*   --- do also have a look the help page  ?methods
 
 
 class(`[`)
-class("[")
+class("[") #  " and `   work both (in such contexts: function *name* or __object__ itself)
 typeof(`[`)
 typeof(`c`)
 typeof(ls)
@@ -60,7 +82,7 @@ D
 dim(D) <- NULL   # ... a function call:  which function is called here?
 D
 `dim<-`(D, c(4,4))
-D  <- diag(1:4); D # matrix ... but can also be treated as a vector:
+D <- diag(1:4); D # matrix ... but can also be treated as a vector:
 D[7:9]
 D[11]
 

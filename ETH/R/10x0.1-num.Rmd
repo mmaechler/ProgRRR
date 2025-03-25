@@ -29,6 +29,11 @@ Actually, it `10 * 0.1` *is* `1.0` on most platforms in today's R, typically:
 10 * 0.1 == 1.0
 ```
 Still, as you will hopefully come to see, it is rather *lucky coincidence*, because we will see that `0.1` is not exactly the same as the mathematical $1/10$.
+A similar computation is
+```{r}
+0.3 + 0.6 == 0.9
+```
+and this is indeed, not true.
 Let's explore some of the numbers in R:
 ```{r}
 x1 <- seq(0, 1, by = 0.1)
@@ -46,7 +51,7 @@ rbind(x1 * 10 == n,
       x2 * 10 == n)
 ```
 
-So it seems, that  `x2` is exact, but `x1` is not?
+So it seems, that `x2` is exact, but `x1` is not?
 Not true:
 ```{r}
 (d2  <- diff(x2))

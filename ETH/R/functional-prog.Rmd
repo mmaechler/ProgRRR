@@ -106,7 +106,7 @@ fix_missing <- function(x) {
 }
 df[] <- lapply(df, fix_missing)
 
-attributes(df)
+dfattributes(df)
 ## what if we drop the  '[]' ?
 df.  <- lapply(df, fix_missing)
 df.. <- as.data.frame(df.)
@@ -174,8 +174,8 @@ get("na_value", envir = env)
 env$na_value
 
 ##
-fix_miss_45  <- fix_missing_99
 environment(fix_miss_45) <- new.env() # silly
+fix_miss_45  <- fix_missing_99
 try(
    fix_miss_45(1:10)
    )# --> error
@@ -291,8 +291,8 @@ integrate(function(x) sin(x) ^ 2, 0, pi)
 Like all functions in R, anonymous functions have `formals()`, a `body()`, and a parent `environment()`:
 
 ```{r}
-formals(function(x = 4) g(x) + h(x))
-body(function(x = 4) g(x) + h(x))
+formals    (function(x = 4) g(x) + h(x))
+body       (function(x = 4) g(x) + h(x))
 environment(function(x = 4) g(x) + h(x))
 ```
 

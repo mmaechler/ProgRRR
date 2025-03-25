@@ -27,13 +27,13 @@ parent.env(pkg.stats) ## -> the next in the search path
 parent.env(nm.stats)  ## -> the __imports__ of stats
 
 coef # S3 generic function
-methods("coef") # 5 methods -- all with "*" : "hidden"
+methods("coef") # 6 methods -- all with "*" : "hidden"
 getAnywhere("coef.default")
 ## now that we know it is in stats
 
 stats ::: coef.default ## *need* 3 ":" because it is "hidden": only in namespace
 
-`:::`  #  a very simple 3-line function !!
+`:::`  # now a Primitive (was a very simple 3-line function !!)
 
 lm <- 1:10 # in globalenv  --- is "masking" the real lm() ...
 
@@ -75,7 +75,7 @@ allParents <- function(e) {
 ap1 <- allParents(environment(lm))
 str(ap1) # maybe "too muchl" --> use
 str(ap1, give.attr=FALSE)
-
+b
 ## now we know that already:
 ap1[[length(ap1) - 2]] ## the 'Autoloads'
 

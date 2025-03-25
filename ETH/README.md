@@ -72,8 +72,7 @@
   tolerance = 10^-8)`
  - NB: Good R packages contain a sub directory (sub folder) `./tests/` !!
    (Examples: `sfsmisc`, `copula`, `lme4`, ..., **all** standard R packages)
- - typical issue about [for()
-  loop](http://stackoverflow.com/questions/2908822/speed-up-the-loop-operation-in-r)
+ - typical issue about [for() loop](https://stackoverflow.com/questions/2908822/speed-up-the-loop-operation-in-r)
   from Stackoverflow.
 
  - functions `system.time()` and `proc.time()`

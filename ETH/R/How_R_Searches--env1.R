@@ -3,7 +3,8 @@
 ####	     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ####  by Suraj Gupta
 ####	 ~~~~~~~~~~~
-#### http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
+#### originally at http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/
+#### now https://blog.thatbuthow.com/How-R-Searches-And-Finds-Stuff/
 #### ===========================================================
 
 ### Early section
@@ -21,13 +22,13 @@ names(m)
 
 ## every environment (except R_EmptyEnv) has an enclosure.
 ## Who's myEnvironment's enclosure?  find out using parent.env()
-parent.env( myEnvironment ) # --> It's "R_GlobalEnv"
+parent.env( myEnvironment )
+# --> It's "R_GlobalEnv"
 
 ## Who's R_GlobalEnv's enclosing environment?
 ## It's the environment called "package:graphics"
 ## for me, usually, as I'm *not* using Rstudio
-parent.env( parent.env( myEnvironment ) )
-## MM: it's the last "attached" package in search(), i.e. at position [2] or [3] in search()
+parent.env( parent.env( myEnvironment ) )## MM: it's the last "attached" package in search(), i.e. at position [2] or [3] in search()
 head(search())
 ## and one further -- still in the search()
 parent.env(parent.env( parent.env( myEnvironment ) ))
@@ -111,7 +112,8 @@ ls( envir = environment() )
 ## and again ls() verifies that "myLogical" is inside myEnvironment after the assignment
 ls( envir = myEnvironment )
 ## character(0)
-assign( "myLogical", c(FALSE, TRUE), envir = myEnvironment )
+name <- "myLogical"
+assign( name, c(FALSE, TRUE), envir = myEnvironment )
 ls( envir = myEnvironment )
 ## [1] "myLogical"
 

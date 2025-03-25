@@ -1,54 +1,56 @@
 # Examples from Cheat Sheet (RStudio contrib, CC BY Ian Kopacka)
 
 ```{r}
-string <- c("Hiphopopotamus", "Rhymenoceros", "time for bottomless lyrics")
+strings <- c("Hiphopopotamus", "Rhymenoceros", 
+             "time for bottomless lyrics")
 pattern <- "t.m"
 ```
 
 ## 1 _Detect_ patterns (extract, too)
 ```{r, grep1}
-grep(pattern, string) # 1 3
-grep(pattern, string, value = TRUE) # # [1] "Hiphopopotamus"  "time ...."
+grep(pattern, strings) # 1 3
+grep(pattern, strings, value = TRUE) # # [1] "Hiphopopotamus"  "time ...."
 
-grepl(pattern, string)
+grepl(pattern, strings)
 ##  ^ logical  --> [1]  TRUE FALSE  TRUE
 
-grep("o", string, value=TRUE)  # everywhere
-grep("om", string, value=TRUE) # once
-grep("o[mt]", string, value=TRUE) # 2 x
+##  1 b: _Detect_ and _extract_
+grep("o", strings, value=TRUE)  # everywhere
+grep("om", strings, value=TRUE) # once
+grep("o[mt]", strings, value=TRUE) # 2 x
 
 ```
 
 ## 2 _Locate_ patterns : Find starting position
 ```{r, regexpr}
- regexpr(pattern, string) # and first match
-gregexpr(pattern, string) # and all   matches
+ regexpr(pattern, strings) # and first match
+gregexpr(pattern, strings) # and all   matches
 ```
 use `substr(text, n1, n2)` to extract the substring from letter n1 to n2
 
 ```{r, substr}
-substr(string, 13,15)
+substr(strings, 13,15)
 ```
 
 ## 3 _Extract_ patterns
 ```{r, regmatches}
-regmatches(string,  regexpr(pattern, string))
-regmatches(string, gregexpr(pattern, string))
+regmatches(strings,  regexpr(pattern, strings))
+regmatches(strings, gregexpr(pattern, strings))
 ```
 
 
 ## 4 _Replace_ patterns
 ```{r, sub}
 replacement <- "_A_"
- sub(pattern, replacement, string)
-gsub(pattern, replacement, string)
+ sub(pattern, replacement, strings)
+gsub(pattern, replacement, strings)
 ## more interesting : use the matched part {'\1' is the first parenthesized part : (*)}
-gsub("(t.m)", "{\\1}", string)
-gsub("(t.m)", "{\\U\\1}", string, perl=TRUE)
+gsub("(t.m)", "{\\1}", strings)
+gsub("(t.m)", "{\\U\\1}", strings, perl=TRUE)
 ```
 
 ## 5 Split a string, using a pattern
 
 ```{r, strspl}
-strsplit(string, pattern)
+strsplit(strings, pattern)
 ```

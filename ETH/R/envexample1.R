@@ -35,7 +35,10 @@ f <- function(y) {
 
 w <- 10
 f(3)
+
 rm(w)
+f(3)
+h()
 ## Sometimes we think we rather "want"  **dynamic scoping**
 ## but R uses  "only" syntactic scoping :
 g <- function(a) {
@@ -64,10 +67,11 @@ g(3) # works
 
 example(splinefun) ## runs all code from the *help* page  'Examples' section
 
-s0 ## prints .... last line:
+## Upps!  New example did redfine `f` !
+f ## prints .... last line:
 ## <environment: ......>   i.e., *not* the globalenv
 ## Looking at the function body:  where's the funny  'z'  from ??
 
-ls( environment(s0) ) # aha, from the environment
-ls.str( environment(s0) )
+ls( environment(f) ) # aha, from the environment
+ls.str( environment(f) )
 
