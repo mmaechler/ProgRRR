@@ -2,15 +2,16 @@
 
 ### Recommended (Prio 1)
 
-| Project Name                    | R pkg       | CRAN                                           | RDep | Last Up | JSS-DOI               | Note             | By |
-|---------------------------------|-------------|------------------------------------------------|-----:|---------|-----------------------|------------------|----|
-| Mult.Emp.Likelihood Tests       | melt        | https://cran.r-project.org/package=melt        |    2 | 2024-04 | 10.18637/jss.v108.i05 |                  |    |
-| Power,Effect...Multilevel       | PUMP        | https://cran.r-project.org/package=PUMP        |    - | 2024-02 | 10.18637/jss.v108.i06 |                  |    |
-| Holistic GLMs                   | holiglm     | https://cran.r-project.org/package=holiglm     |    - | 2024-02 | 10.18637/jss.v108.i07 |                  |    |
-| Nonstation.Fin.Volatility       | tvgarch     | https://cran.r-project.org/package=tvgarch     |    1 | 2024-04 | 10.18637/jss.v108.i09 |                  |    |
-| Elastic Net -- All GLM          | glmnet      | https://cran.r-project.org/package=glmnet      |  100 | 2023-08 | 10.18637/jss.v106.i01 | Hastie           |    |
-| Corr.Var. Selection..grpLasso   | MLGL        | https://cran.r-project.org/package=MLGL        |    - | 2023-03 | 10.18637/jss.v106.i03 |                  |    |
-| Broken Stick - Irreg. Longitud. | brokenstick | https://cran.r-project.org/package=brokenstick |    - | 2023-03 | 10.18637/jss.v106.i07 | van Buuren;tidy* |    |
+| Project Name                      | R pkg       | CRAN                                           | RDep | Last Up | JSS-DOI               | Note             | By |
+|-----------------------------------|-------------|------------------------------------------------|-----:|---------|-----------------------|------------------|----|
+| Mult.Emp.Likelihood Tests         | melt        | https://cran.r-project.org/package=melt        |  (2) | 2024-05 | 10.18637/jss.v108.i05 |                  |    |
+| Power,Effect...Multilevel         | PUMP        | https://cran.r-project.org/package=PUMP        |    - | 2025-03 | 10.18637/jss.v108.i06 |                  |    |
+| Holistic GLMs                     | holiglm     | https://cran.r-project.org/package=holiglm     |    - | 2024-12 | 10.18637/jss.v108.i07 |                  |    |
+| Nonstation.Fin.Volatility         | tvgarch     | https://cran.r-project.org/package=tvgarch     |  (1) | 2024-04 | 10.18637/jss.v108.i09 |                  |    |
+| Elastic Net -- All GLM            | glmnet      | https://cran.r-project.org/package=glmnet      | ~100 | 2023-08 | 10.18637/jss.v106.i01 | Hastie           |    |
+| Corr.Var. Selection..grpLasso     | MLGL        | https://cran.r-project.org/package=MLGL        |    - | 2023-03 | 10.18637/jss.v106.i03 |                  |    |
+| Broken Stick - Irreg. Longitud.   | brokenstick | https://cran.r-project.org/package=brokenstick |    - | 2025-03 | 10.18637/jss.v106.i07 | van Buuren;tidy* |    |
+| Cond.Graph.Lasso + Cens + Missing | cglasso     | https://cran.r-project.org/package=cglasso     |  (1) | 2024-02 | 10.18637/jss.v106.i07 |                  |    |
 
 ### With __less__ Priority
 
