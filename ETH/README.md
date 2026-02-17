@@ -1,6 +1,6 @@
 # Programming w/ *R* for *R*eproducible *R*esearch: Prog R^3
 
-## ETH lecture 401-6228-00L 
+## ETH lecture 401-6228-00L
 - catalogue data SS 2026 [vvz.ethz.ch](https://www.vvz.ethz.ch/Vorlesungsverzeichnis/lerneinheit.view?semkez=2026S&ansicht=ALLE&lerneinheitId=197774&lang=en)
 <!-- - video recordings of lectures: [video.ethz.ch](https://video.ethz.ch/lectures/d-mathematics/2022/spring/401-6228-00L.html) -->
 
@@ -13,10 +13,10 @@
    [Rmarkdown/Quarto Diagram](https://polybox.ethz.ch/index.php/s/MwoMtyCTTXnnGY4).
 
  - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html) [Question 7.31](https://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f);
- 	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd): Learn more about "real" numbers (rounding, inaccuracy, ...) in any computer language 
+ 	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd): Learn more about "real" numbers (rounding, inaccuracy, ...) in any computer language
 
    In R:
-   
+
        Everything that **exists** is an object;  
        Everything that **happens** is a function call
 
@@ -41,7 +41,7 @@
  - Functions in packages in R: [R/packages-search.Rmd](R/packages-search.Rmd)
  - The three parts of every (non-`.Primitive`) function: ....
  - Repeat and learn more on functions, reading H.Wickam's chapter [6. Functions](http://adv-r.had.co.nz/Functions.html)
- - "The Pipe" - Another way to call functions 
+ - "The Pipe" - Another way to call functions
  - Lexical Scoping - `environment` [R/envexample1.R](R/envexample1.R), and the small [R/envex2.R](R/envex2.R).
  - `environment`s : Beginnig of "Advanced R"s [8. Environments](http://adv-r.had.co.nz/Environments.html)
 
@@ -65,7 +65,7 @@
  - The `counter_one()` example (homework above): Q ?
  - **"R is slow"** etc:
    "***Premature optimization is the root of all evil***", [Donald
-  Knuth](http://en.wikiquote.org/wiki/Donald_Knuth)
+  Knuth](https://en.wikiquote.org/wiki/Donald_Knuth)
  - Rather: Test, test, and test again; using `all.equal(target, current,
   tolerance = 10^-8)`
  - NB: Good R packages contain a sub directory (sub folder) `./tests/` !!
@@ -117,7 +117,7 @@
 
 #### Short outlook into  __Regular Expressions__
  - All good languages have them (R, perl, python, PHP, java, emacs-lisp, ...):
-    http://www.regular-expressions.info/rlanguage.html
+    https://www.regular-expressions.info/rlanguage.html
 
  - Help pages for `grep` and `regexp`.
 
@@ -145,11 +145,11 @@
 -   Norman Matloff (2011) The Art of R Programming - A tour of
     statistical software design.\
     no starch press, San Francisco. ***on stock at Polybuchhandlung (CHF 42.-)***;
-	see [online](http://www.nostarch.com/artofr.htm) for data, R code.
+	see [online](https://www.nostarch.com/artofr.htm) for data, R code.
 -   Hadley Wickham (2013 ff) ***Advanced R***, [online](http://adv-r.had.co.nz/)\
     *more advanced than our course; partly focused on his own packages*
--   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***, originally at 
-    `http://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/`, now
+-   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***, originally at
+    `https://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/`, now
     [available at](https://blog.thatbuthow.com/how-r-searches-and-finds-stuff/);
     A "modern re-edition" of it (using Rmarkdown not available) at
     [askming](https://askming.github.io/study_notes/Stats_Comp/Note-How%20R%20searches%20and%20finds%20stuff.html)
@@ -160,11 +160,11 @@
 
 -   "Literate Programming" by Donald Knuth
 -   "The Elements of Programming Style" by Kernighan and Plauger:
-    [Wikipedia,](http://en.wikipedia.org/wiki/The_Elements_of_Programming_Style),\
-    [Quotes](http://www.softwarequotes.com/showquotes.aspx?id=574&name=P.)
+    [Wikipedia,](https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style),\
+    [Quotes](https://www.softwarequotes.com/showquotes.aspx?id=574&name=P.)
 
 
 ---
-[Martin Maechler](https://stat.ethz.ch/~maechler),
-[Seminar for Statistics](https://stat.ethz.ch/),
-[ETH Zurich](https://www.ethz.ch).
+[Martin Maechler](https://people.math.ethz.ch/~maechler/),
+[Seminar for Statistics](https://stat.ethz.ch/), <!-- translates to  https://math.ethz.ch/sfs -->
+[ETH Zurich](https://ethz.ch).
