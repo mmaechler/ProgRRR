@@ -7,12 +7,10 @@
 ## Table of Contents
 
 ### Week 1 -- Introduction
- - Reproducible Reseach -->  Rmarkdown, Sweave, Knitr, all based on Donald
-   Knuth's "noweb".
-   What happens in R Studio when klicking "Knit": Knitr (/ Sweave) and
-   Pandoc; Graphically, Kieran
-   Healy's (see [here](https://kieranhealy.org/resources/)) visualization:
-   [Rmarkdown Diagram](https://polybox.ethz.ch/index.php/s/7vlx3zTAAqkoGyX).
+ - Reproducible Reseach -->  Rmarkdown, Sweave, Knitr, all based on Donald Knuth's "noweb".
+   What happens in R Studio when klicking "Knit": calls Knitr (/ Sweave) and Pandoc;
+   Graphically, Kieran Healy's (see [here](https://kieranhealy.org/resources/)) visualization:
+   [Rmarkdown/Quarto Diagram](https://polybox.ethz.ch/index.php/s/MwoMtyCTTXnnGY4).
 
  - Rmarkdown example for (https://cran.r-project.org/doc/FAQ/R-FAQ.html) [Question 7.31](https://cran.r-project.org/doc/FAQ/R-FAQ.html#Why-doesn_0027t-R-think-these-numbers-are-equal_003f);
  	[R/10x0.1-num.Rmd](R/10x0.1-num.Rmd): Learn more about "real" numbers (rounding, inaccuracy, ...) in any computer language 
