@@ -136,9 +136,9 @@
 
 ## Miscellaneous Information
 
-### Lecture attestation (Testat):
+### Lecture attestation (Testat / ECTS credits):
 
-- You'd write a report, using R and Rmarkdown, about one of these [projects](projects.md) .
+- By an _oral_ exam (duration: TBD, 20' or 25').<!-- You'd write a report, using R and Rmarkdown, about one of these [projects](projects.md) . -->
 
 ### Recommended Reading <!-- {#recommended-reading .heading} -->
 
