@@ -48,7 +48,7 @@
 ### Week 4
 
  - Recap __Functions__:
-    [Our modified functional-prog.Rmd](R/functional-prog.Rmd) excerpt of
+    Our _modified_ [functional-prog.Rmd](R/functional-prog.Rmd) excerpt of
     [H.Wickham's functional programming](http://adv-r.had.co.nz/Functional-programming.html) chapter.
  -  [The initial R session ("Play time ...")](R/How_R_Searches--env1.R),
 	somewhat extended, of ***How R Searches and Finds Stuff***
