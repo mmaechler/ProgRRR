@@ -131,9 +131,6 @@
 
 --------------
 
-
-
-
 ## Miscellaneous Information
 
 ### Lecture attestation (Testat / ECTS credits):
@@ -150,7 +147,7 @@
     *more advanced than our course; partly focused on his own packages*
 -   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***, originally at
     `https://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/`, now
-    [available at](https://blog.thatbuthow.com/how-r-searches-and-finds-stuff/);
+    [available here](https://blog.thatbuthow.com/how-r-searches-and-finds-stuff/);
     A "modern re-edition" of it (using Rmarkdown not available) at
     [askming](https://askming.github.io/study_notes/Stats_Comp/Note-How%20R%20searches%20and%20finds%20stuff.html)
     Tough read, but helpful with its nice illustrations. You may consider
