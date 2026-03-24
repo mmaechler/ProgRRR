@@ -143,7 +143,7 @@
     statistical software design.\
     no starch press, San Francisco. ***on stock at Polybuchhandlung (CHF 42.-)***;
 	see [online](https://www.nostarch.com/artofr.htm) for data, R code.
--   Hadley Wickham (2013 ff) ***Advanced R***, [online](http://adv-r.had.co.nz/)\
+-   Hadley Wickham (2013 ff) ***Advanced R***, [online](http://adv-r.had.co.nz/)
     *more advanced than our course; partly focused on his own packages*
 -   Suraj Gupta (March 29, 2012)  ***How R Searches and Finds Stuff***, originally at
     `https://obeautifulcode.com/R/How-R-Searches-And-Finds-Stuff/`, now
